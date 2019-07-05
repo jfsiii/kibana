@@ -21,6 +21,10 @@ git push upstream
 
 # switch back to feature-integrations-manager on your fork
 git checkout -B feature-integrations-manager origin/feature-integrations-manager
+
+## bring in the changes from upstream
+git pull upstream feature-integrations-manager
+git push origin
 ```
 </details>
 
