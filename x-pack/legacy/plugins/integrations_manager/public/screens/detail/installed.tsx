@@ -33,13 +33,6 @@ export function InstalledIntegration(props: IntegrationProps & { reload: () => v
   }
 
   function RemoveButton() {
-    const successMessage = (
-      <EuiText>
-        <p>
-          <EuiIcon type="check" /> Successfully added!
-        </p>
-      </EuiText>
-    );
     if (removalState.failure) {
       // eslint-disable-next-line no-console
       console.log('An error occurred during removal', removalState.error);
@@ -51,7 +44,6 @@ export function InstalledIntegration(props: IntegrationProps & { reload: () => v
     }
     return (
       <div>
-        {removalState.success ? successMessage : null}
         <EuiButton disabled={removalState.loading} onClick={remove}>
           Remove this integration
         </EuiButton>

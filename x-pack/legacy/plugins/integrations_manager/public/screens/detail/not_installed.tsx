@@ -34,14 +34,6 @@ export function NotInstalledIntegration(props: IntegrationProps & { reload: () =
   }
 
   function AddButton() {
-    const successMessage = (
-      <EuiText>
-        <p>
-          <EuiIcon type="check" /> Successfully removed!
-        </p>
-      </EuiText>
-    );
-
     if (installState.failure) {
       // eslint-disable-next-line no-console
       console.log('An error occurred during install', installState.error);
@@ -52,12 +44,9 @@ export function NotInstalledIntegration(props: IntegrationProps & { reload: () =
       );
     }
     return (
-      <React.Fragment>
-        {installState.success ? successMessage : null}
-        <EuiButton disabled={installState.loading} onClick={install}>
-          Add this integration
-        </EuiButton>
-      </React.Fragment>
+      <EuiButton disabled={installState.loading} onClick={install}>
+        Add this integration
+      </EuiButton>
     );
   }
 
