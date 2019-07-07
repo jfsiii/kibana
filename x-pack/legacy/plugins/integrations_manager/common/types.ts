@@ -8,6 +8,20 @@ export { Request, ServerRoute } from 'hapi';
 
 // the contract with the registry
 export type IntegrationList = IntegrationListItem[];
+export type IntegrationStatus = 'installed' | 'not_installed';
+export type IntegrationAssetType =
+  | 'ingest-pipeline'
+  | 'visualization'
+  | 'dashboard'
+  | 'index-pattern';
+
+export interface IntegrationAsset {
+  href: string;
+  id: string;
+  type: IntegrationAssetType;
+  description?: string;
+  title?: string;
+}
 
 // registry /list
 // https://github.com/elastic/integrations-registry/blob/master/docs/api/list.json
@@ -17,15 +31,19 @@ export interface IntegrationListItem {
   icon: string;
   name: string;
   version: string;
+  status: IntegrationStatus;
 }
 
 // registry /package/{name}
 // https://github.com/elastic/integrations-registry/blob/master/docs/api/package.json
-export interface IntegrationInfo {
+export interface IntegrationProps {
   name: string;
   version: string;
   description: string;
   icon: string;
+  status: IntegrationStatus;
+  availableAssets: IntegrationAssetType[];
+  installedAssets: IntegrationAsset[];
   requirement: {
     kibana: {
       min: string;
@@ -33,3 +51,8 @@ export interface IntegrationInfo {
     };
   };
 }
+
+// lifted from APM
+export type PromiseReturnType<Func> = Func extends (...args: any[]) => Promise<infer Value>
+  ? Value
+  : Func;

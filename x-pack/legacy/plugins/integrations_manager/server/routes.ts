@@ -71,12 +71,29 @@ export const routes: ServerRoute[] = [
         .get(SAVED_OBJECT_TYPE, pkgkey)
         .catch(err => {
           /* swallow errors for now */
+          // eslint-disable-next-line no-console
+          console.log('error getting saved object for IM state', err);
         });
 
       const status = savedObject && !savedObject.error ? 'installed' : 'not_installed';
 
+      const installedAssets = savedObject
+        ? savedObject.attributes.installed.map(o => {
+            switch (o.type) {
+              case 'dashboard':
+                return { ...o, href: `/app/kibana#/dashboard/${o.id}` };
+              case 'visualization':
+                return { ...o, href: `/app/kibana#/visualize/edit/${o.id}` };
+              case 'index-pattern':
+                return { ...o, href: `/app/kibana#/management/kibana/index_patterns/${o.id}` };
+              default:
+                return o;
+            }
+          })
+        : [];
+
       // map over paths and test types from https://github.com/elastic/integrations-registry/blob/master/ASSETS.md
-      const features = ['injest-pipeline', 'visualization', 'dashboard', 'index-pattern'];
+      const features = ['ingest-pipeline', 'visualization', 'dashboard', 'index-pattern'];
 
       return {
         ...info,
@@ -84,6 +101,7 @@ export const routes: ServerRoute[] = [
         features,
         status,
         savedObject,
+        installedAssets,
       };
     },
   },
@@ -93,19 +111,39 @@ export const routes: ServerRoute[] = [
     options: { tags: [`access:${PLUGIN_ID}`], json: { space: 2 } },
     handler: async (req: InstallFeatureRequest) => {
       const { pkgkey, feature } = req.params;
+      let toBeSavedObjects = await getObjects(pkgkey, feature);
 
-      if (feature === 'dashboard') {
-        const toBeSavedObjects = await getObjects(pkgkey, feature);
+      const pkgName = pkgkey.split('-')[0];
+
+      // Temporarily fill in description and title to align
+      // fake data with current package name
+      toBeSavedObjects = toBeSavedObjects.map((o, i) => {
+        const copy = { ...o, attributes: { ...o.attributes } };
+        if (o.attributes && o.attributes.title) {
+          copy.attributes.title = `${pkgName}---${o.attributes.title}`;
+        }
+        if (o.attributes && o.attributes.description) {
+          copy.attributes.description = `[${pkgName}] ${o.attributes.description}`;
+        }
+        return copy;
+      });
+
+      if (feature === 'dashboard' || !feature) {
         const client = getClient(req);
         const createResults = await client.bulkCreate(toBeSavedObjects, { overwrite: true });
-        const installed = createResults.saved_objects.map(({ id, type }) => ({ id, type }));
+        const installed = createResults.saved_objects.map(({ id, type, attributes = {} }) => ({
+          id,
+          type,
+          title: attributes.title,
+          description: attributes.description,
+        }));
         const mgrResults = await client.create(
           SAVED_OBJECT_TYPE,
           { installed },
           { id: pkgkey, overwrite: true }
         );
 
-        return mgrResults;
+        return { ...mgrResults, createResults, toBeSavedObjects };
       }
 
       return {
@@ -132,7 +170,7 @@ export const routes: ServerRoute[] = [
 
       // ASK: should the manager uninstall the assets it installed
       // or just the references in SAVED_OBJECT_TYPE?
-      if (feature === 'dashboard') {
+      if (feature === 'dashboard' || !feature) {
         // Delete the installed assets
         const deletePromises = installedObjects.map(async ({ id, type }) =>
           client.delete(type, id)

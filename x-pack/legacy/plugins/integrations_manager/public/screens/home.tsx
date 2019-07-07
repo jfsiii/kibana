@@ -5,15 +5,15 @@
  */
 import React, { useState, useEffect } from 'react';
 import { EuiPanel, EuiSpacer, EuiText, EuiTitle } from '@elastic/eui';
-import { getIntegrationsList } from '../data';
+import { getIntegrationsGroupedByState } from '../data';
 import { IntegrationListGrid } from '../components/integration_list_grid';
-import { IntegrationList } from '../../common/types';
+import { PromiseReturnType } from '../../common/types';
 
 export function Home() {
-  const [list, setList] = useState<IntegrationList>([]);
+  const [list, setList] = useState<PromiseReturnType<typeof getIntegrationsGroupedByState>>({});
 
   useEffect(() => {
-    getIntegrationsList().then(setList);
+    getIntegrationsGroupedByState().then(setList);
   }, []);
 
   return (
@@ -21,10 +21,6 @@ export function Home() {
       <EuiTitle>
         <h1>Elastic Integrations Manager</h1>
       </EuiTitle>
-      <EuiSpacer />
-      <EuiText>
-        <h3>Available Integrations</h3>
-      </EuiText>
       <EuiSpacer />
       {list ? <IntegrationListGrid list={list} /> : null}
     </EuiPanel>

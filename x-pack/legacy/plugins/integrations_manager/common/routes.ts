@@ -18,3 +18,15 @@ export function getListPath() {
 export function getInfoPath(pkgkey: string) {
   return API_INFO_PATTERN.replace('{pkgkey}', pkgkey);
 }
+
+export function getInstallPath(pkgkey: string, feature: string = '') {
+  return API_INSTALL_PATTERN.replace('{pkgkey}', pkgkey)
+    .replace('{feature?}', feature)
+    .replace(/\/$/, ''); // trim trailing slash
+}
+
+export function getRemovePath(pkgkey: string, feature: string = '') {
+  return API_DELETE_PATTERN.replace('{pkgkey}', pkgkey)
+    .replace('{feature?}', feature)
+    .replace(/\/$/, ''); // trim trailing slash
+}

@@ -29,6 +29,8 @@ export const mappings = {
         properties: {
           id: { type: 'keyword' },
           type: { type: 'keyword' },
+          title: { type: 'keyword' },
+          description: { type: 'keyword' },
         },
       },
     },
