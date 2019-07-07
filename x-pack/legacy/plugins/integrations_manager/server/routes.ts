@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { PLUGIN_ID, SAVED_OBJECT_TYPE } from '../common/constants';
-import { Request, ServerRoute } from '../common/types';
+import { Request, ServerRoute, IntegrationStateSavedObject } from '../common/types';
 import {
   API_LIST_PATTERN,
   API_INFO_PATTERN,
@@ -68,8 +68,8 @@ export const routes: ServerRoute[] = [
       ]);
 
       const savedObject = await getClient(req)
-        .get(SAVED_OBJECT_TYPE, pkgkey)
-        .catch(err => {
+        .get<IntegrationStateSavedObject>(SAVED_OBJECT_TYPE, pkgkey)
+        .catch((err: Error) => {
           /* swallow errors for now */
           // eslint-disable-next-line no-console
           console.log('error getting saved object for IM state', err);
@@ -93,12 +93,12 @@ export const routes: ServerRoute[] = [
         : [];
 
       // map over paths and test types from https://github.com/elastic/integrations-registry/blob/master/ASSETS.md
-      const features = ['ingest-pipeline', 'visualization', 'dashboard', 'index-pattern'];
+      const availableAssets = ['ingest-pipeline', 'visualization', 'dashboard', 'index-pattern'];
 
       return {
         ...info,
         paths,
-        features,
+        availableAssets,
         status,
         savedObject,
         installedAssets,

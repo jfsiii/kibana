@@ -4,6 +4,9 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
+import { SavedObject } from '../../../../../target/types/server';
+import { SavedObjectAttributes } from '../../../../../src/core/server';
+
 export { Request, ServerRoute } from 'hapi';
 
 // the contract with the registry
@@ -23,6 +26,10 @@ export interface IntegrationAsset {
   title?: string;
 }
 
+export interface IntegrationStateSavedObject extends SavedObjectAttributes {
+  installed: IntegrationAsset[];
+}
+
 // registry /list
 // https://github.com/elastic/integrations-registry/blob/master/docs/api/list.json
 export interface IntegrationListItem {
@@ -32,6 +39,7 @@ export interface IntegrationListItem {
   name: string;
   version: string;
   status: IntegrationStatus;
+  savedObject?: SavedObject;
 }
 
 // registry /package/{name}
