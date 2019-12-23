@@ -4,8 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { Response } from 'node-fetch';
 import { URL } from 'url';
+import { Response } from 'node-fetch';
 import {
   AssetParts,
   AssetsGroupedByServiceByType,

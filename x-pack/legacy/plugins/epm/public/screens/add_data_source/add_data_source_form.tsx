@@ -16,8 +16,8 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { installDatasource, getPolicies } from '../../data';
 import { useCore, useLinks } from '../../hooks';
-import { StepOne } from './step_one';
 import { PackageInfo } from '../../../common/types';
+import { StepOne } from './step_one';
 
 const StyledSteps = styled.div`
   .euiStep__titleWrapper {

@@ -5,11 +5,11 @@
  */
 
 import { generatePath } from 'react-router-dom';
-import { useCore } from '.';
 import { PLUGIN } from '../../common/constants';
 import { getFilePath, getInfoPath } from '../../common/routes';
 import { patterns } from '../routes';
-import { DetailViewPanelName } from '..';
+import { DetailViewPanelName } from '../';
+import { useCore } from './';
 
 // TODO: get this from server/packages/handlers.ts (move elsewhere?)
 // seems like part of the name@version change

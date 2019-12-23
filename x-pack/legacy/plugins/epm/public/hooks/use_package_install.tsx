@@ -8,11 +8,11 @@ import { EuiButton, EuiFlexGroup, EuiFlexItem } from '@elastic/eui';
 import createContainer from 'constate';
 import React, { Fragment, useCallback, useState } from 'react';
 import { NotificationsStart } from 'src/core/public';
-import { useLinks } from '.';
 import { toMountPoint } from '../../../../../../src/plugins/kibana_react/public';
 import { PackageInfo } from '../../common/types';
 import { installPackage as fetchInstallPackage, removePackage } from '../data';
 import { InstallStatus } from '../types';
+import { useLinks } from './';
 
 interface PackagesInstall {
   [key: string]: PackageInstallItem;

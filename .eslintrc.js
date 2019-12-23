@@ -595,6 +595,31 @@ module.exports = {
     },
 
     /**
+     * EPM overrides
+     */
+    {
+      files: ['x-pack/legacy/plugins/epm/**/*.{js,jsx,ts,tsx}'],
+      rules: {
+        'max-params': ['error', 3],
+        'no-console': ['warn', { allow: ['error'] }],
+        'import/order': [
+          'error',
+          {
+            groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          },
+        ],
+      },
+    },
+    {
+      plugins: ['react-hooks'],
+      files: ['x-pack/legacy/plugins/epm/**/*.{ts,tsx}'],
+      rules: {
+        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/exhaustive-deps': ['error'],
+      },
+    },
+
+    /**
      * GIS overrides
      */
     {

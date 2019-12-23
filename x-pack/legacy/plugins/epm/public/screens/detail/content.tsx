@@ -7,7 +7,6 @@
 import { EuiFlexGroup, EuiFlexItem, EuiHorizontalRule, EuiSpacer } from '@elastic/eui';
 import React from 'react';
 import styled from 'styled-components';
-import { DEFAULT_PANEL, DetailProps } from '.';
 import { PackageInfo } from '../../../common/types';
 import { AssetsFacetGroup } from '../../components/assets_facet_group';
 import { Requirements } from '../../components/requirements';
@@ -15,6 +14,7 @@ import { CenterColumn, LeftColumn, RightColumn } from './layout';
 import { OverviewPanel } from './overview_panel';
 import { SideNavLinks } from './side_nav_links';
 import { DataSourcesPanel } from './data_sources_panel';
+import { DEFAULT_PANEL, DetailProps } from './';
 
 type ContentProps = PackageInfo & Pick<DetailProps, 'panel'> & { hasIconPanel: boolean };
 export function Content(props: ContentProps) {

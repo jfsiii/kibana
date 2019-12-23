@@ -4,9 +4,9 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
+import { resolve } from 'path';
 import JoiNamespace from 'joi';
 import { Legacy } from 'kibana';
-import { resolve } from 'path';
 import { LegacyPluginInitializer, LegacyPluginOptions } from 'src/legacy/types';
 import { PLUGIN } from './common/constants';
 import manifest from './kibana.json';
