@@ -6,7 +6,7 @@
 
 import yaml from 'js-yaml';
 import { SavedObjectsClientContract } from 'src/core/server/';
-import { Datasource, Stream } from '../../../ingest/common/types/domain_data';
+import { Datasource, Input, Stream } from '../../../ingest/common/types/domain_data';
 import { SAVED_OBJECT_TYPE_DATASOURCES } from '../../common/constants';
 import { AssetReference, Dataset, InstallationStatus, RegistryPackage } from '../../common/types';
 import * as Ingest from '../ingest';
@@ -61,12 +61,7 @@ export async function createDatasource({
     datasets,
   });
 
-  const savedDatasource = await Ingest.createDatasource({ request, datasource });
-  const datasources = [savedDatasource.id];
-  const addDatasourcesToPolicyPromises = policyIds.map(policyId =>
-    Ingest.addDatasourcesToPolicy({ datasources, policyId, request })
-  );
-  await Promise.all(addDatasourcesToPolicyPromises);
+  await Ingest.createDatasource({ request, datasource });
 
   return installedAssetReferences;
 }
@@ -93,13 +88,14 @@ async function createDatasourceObject(options: {
 }) {
   const { savedObjectsClient, pkg, toSave, datasets, datasourceName } = options;
   const savedDatasource = await getDatasource({ savedObjectsClient, name: datasourceName });
-  const savedAssets = savedDatasource?.package.assets || [];
+  const savedAssets = savedDatasource?.package?.assets || [];
   const combinedAssets = toSave.reduce(mergeReferencesReducer, savedAssets);
   const streams = await getStreams(Registry.pkgToPkgKey(pkg), datasets);
 
   const datasource: Omit<Datasource, 'id'> = {
     name: datasourceName,
     read_alias: 'read_alias',
+    agent_config_id: 'agent is required',
     package: {
       name: pkg.name,
       version: pkg.version,
@@ -117,14 +113,34 @@ async function getStreams(pkgkey: string, datasets: Dataset[]) {
   const streams: Stream[] = [];
   if (datasets) {
     for (const dataset of datasets) {
-      const input = yaml.load(await getConfig(pkgkey, dataset));
-      if (input) {
-        streams.push({
-          id: dataset.name,
-          input,
-          output_id: 'default',
-        });
-      }
+      const defaultInput = { config: {}, type: 'log' };
+      const input: Input = yaml.load(await getConfig(pkgkey, dataset)) || defaultInput;
+      const {
+        type,
+        config,
+        fields,
+        ilm_policy,
+        index_template,
+        ingest_pipelines,
+        ...otherInputProps
+      } = input;
+
+      const stream: Stream = {
+        config: {},
+        input: {
+          type,
+          config: {
+            ...config,
+            ...otherInputProps,
+          },
+          fields,
+          ilm_policy,
+          index_template,
+          ingest_pipelines,
+        },
+        output_id: 'default',
+      };
+      streams.push(stream);
     }
   }
   return streams;

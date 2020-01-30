@@ -102,11 +102,14 @@ export interface Policy {
  * and metrics. A data source can be in multiple policies at the same time. A datasource can
  * have multiple streams.
  */
+// mirroring plugins/ingest_manager/common/types/models/datasource.ts
 export interface Datasource extends SavedObjectAttributes {
   id: string;
   name: string;
-  package: Package;
+  namespace?: string;
   read_alias?: string;
+  agent_config_id: string;
+  package?: Package;
   streams: Stream[];
 }
 
@@ -148,7 +151,6 @@ export enum AssetType {
  */
 export interface Stream extends SavedObjectAttributes {
   config?: { [key: string]: any };
-  id: string;
   input: Input;
   output_id: string;
   processors?: string[];
@@ -163,7 +165,6 @@ export interface Input extends SavedObjectAttributes {
    */
   config: { [key: string]: any };
   fields?: Array<{ [key: string]: any }>;
-  id?: string;
   ilm_policy?: string;
   index_template?: string;
   /**
@@ -174,12 +175,7 @@ export interface Input extends SavedObjectAttributes {
   type: InputType;
 }
 
-export enum InputType {
-  Etc = 'etc',
-  Log = 'log',
-  MetricDocker = 'metric/docker',
-  MetricSystem = 'metric/system',
-}
+export type InputType = string;
 
 /**
  * Where to send the data

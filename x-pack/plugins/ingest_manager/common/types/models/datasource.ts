@@ -5,12 +5,7 @@
  */
 import { schema, TypeOf } from '@kbn/config-schema';
 
-export enum InputType {
-  Etc = 'etc',
-  Log = 'log',
-  MetricDocker = 'metric/docker',
-  MetricSystem = 'metric/system',
-}
+export type InputType = string;
 
 const DatasourceBaseSchema = {
   name: schema.string(),
@@ -19,10 +14,12 @@ const DatasourceBaseSchema = {
   agent_config_id: schema.string(),
   package: schema.maybe(
     schema.object({
-      assets: schema.object({
-        id: schema.string(),
-        type: schema.string(),
-      }),
+      assets: schema.arrayOf(
+        schema.object({
+          id: schema.string(),
+          type: schema.string(),
+        })
+      ),
       description: schema.string(),
       name: schema.string(),
       title: schema.string(),
@@ -33,12 +30,7 @@ const DatasourceBaseSchema = {
     schema.object({
       config: schema.recordOf(schema.string(), schema.any()),
       input: schema.object({
-        type: schema.oneOf([
-          schema.literal(InputType.Etc),
-          schema.literal(InputType.Log),
-          schema.literal(InputType.MetricDocker),
-          schema.literal(InputType.MetricSystem),
-        ]),
+        type: schema.string(),
         config: schema.recordOf(schema.string(), schema.any()),
         fields: schema.maybe(schema.arrayOf(schema.recordOf(schema.string(), schema.any()))),
         ilm_policy: schema.maybe(schema.string()),
