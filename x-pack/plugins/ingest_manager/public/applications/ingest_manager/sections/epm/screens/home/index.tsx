@@ -7,14 +7,14 @@ import { EuiHorizontalRule, EuiPage, EuiPageBody, EuiSpacer } from '@elastic/eui
 import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
 // import { PLUGIN } from '../../../common/constants';
-import { CategorySummaryItem, PackageList } from '../../../../types';
+import { CategorySummaryItem, CategorySummaryList, PackageList } from '../../../../types';
 import { PackageListGrid } from '../../components/package_list_grid';
 // import { useBreadcrumbs, useLinks } from '../../hooks';
 // import { useLinks } from '../../hooks';
 import { CategoryFacets } from './category_facets';
 import { Header } from './header';
-import { useAllPackages, useCategoryPackages, useInstalledPackages, useLocalSearch } from './hooks';
-import { useGetCategories } from '../../../../hooks';
+import { useCategoryPackages, useInstalledPackages, useLocalSearch } from './hooks';
+import { useGetCategories, useGetPackages } from '../../../../hooks';
 import { SearchPackages } from './search_packages';
 
 export const FullBleedPage = styled(EuiPage)`
@@ -64,10 +64,13 @@ type HomeState = ReturnType<typeof useHomeState>;
 export function useHomeState() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [categories, setCategories] = useState<CategorySummaryList>([]);
   const { data: categoriesRes } = useGetCategories();
-  const categories = categoriesRes?.response;
+  setCategories(categoriesRes?.response ?? []);
   const [categoryPackages, setCategoryPackages] = useCategoryPackages(selectedCategory);
-  const [allPackages, setAllPackages] = useAllPackages(selectedCategory, categoryPackages);
+  // const [allPackages, setAllPackages] = useAllPackages(selectedCategory, categoryPackages);
+  const { data: packagesRes } = useGetPackages();
+  const allPackages = packagesRes?.response ?? [];
   const localSearchRef = useLocalSearch(allPackages);
   const [installedPackages, setInstalledPackages] = useInstalledPackages(allPackages);
 
@@ -78,7 +81,6 @@ export function useHomeState() {
     setSelectedCategory,
     categories,
     allPackages,
-    setAllPackages,
     installedPackages,
     localSearchRef,
     setInstalledPackages,
@@ -104,7 +106,7 @@ function AvailablePackages({
   const noFilter = {
     id: '',
     title: 'All',
-    count: allPackages.length,
+    count: allPackages?.length ?? 0,
   };
 
   const controls = categories ? (

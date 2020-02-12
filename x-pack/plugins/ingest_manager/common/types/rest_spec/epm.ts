@@ -7,8 +7,7 @@ import { schema } from '@kbn/config-schema';
 import {
   AssetReference,
   CategorySummaryList,
-  Installable,
-  RegistryPackage,
+  PackageList,
   Installed,
   NotInstalled,
 } from '../models/epm';
@@ -24,22 +23,7 @@ export const GetPackagesRequestSchema = {
 };
 
 export interface GetPackagesResponse {
-  response: Array<
-    Installable<
-      Pick<
-        RegistryPackage,
-        | 'name'
-        | 'title'
-        | 'version'
-        | 'description'
-        | 'type'
-        | 'icons'
-        | 'internal'
-        | 'download'
-        | 'path'
-      >
-    >
-  >;
+  response: PackageList;
   success: boolean;
 }
 

@@ -6,7 +6,7 @@
 
 import { useRequest } from './use_request';
 import { epmRouteService } from '../../services';
-import { GetCategoriesResponse } from '../../types';
+import { GetCategoriesResponse, GetPackagesResponse } from '../../types';
 
 export const useGetCategories = () => {
   return useRequest<GetCategoriesResponse>({
@@ -14,3 +14,10 @@ export const useGetCategories = () => {
     method: 'get',
   });
 };
+
+export function useGetPackages(/* selectedCategory: string, categoryPackages: PackageList*/) {
+  return useRequest<GetPackagesResponse>({
+    path: epmRouteService.getListPath(),
+    method: 'get',
+  });
+}

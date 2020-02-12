@@ -140,7 +140,7 @@ export interface VarsEntry {
 // internal until we need them
 interface PackageAdditions {
   title: string;
-  assets: AssetsGroupedByServiceByType;
+  // assets: AssetsGroupedByServiceByType;
 }
 
 // Managers public HTTP response types

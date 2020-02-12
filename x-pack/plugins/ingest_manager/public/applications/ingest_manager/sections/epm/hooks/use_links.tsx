@@ -7,10 +7,11 @@
 import { generatePath } from 'react-router-dom';
 // import { useCore } from '.';
 // import { PLUGIN } from '../../common/constants';
-import { getFilePath, getInfoPath } from '../tmp_routes';
-import { patterns } from '../routes';
+import { epmRouteService } from '../../../../../../common/services';
+
 // import { DetailViewPanelName } from '..';
 
+const { getFilePath, getInfoPath } = epmRouteService;
 // create './types' later and move there?
 type DetailViewPanelName = 'overview' | 'data-sources';
 
@@ -80,7 +81,7 @@ export function useLinks() {
       const filePath = `${getInfoPath(pkgkey)}/${imagePath}`;
       return filePath;
     },
-    toListView: () => appRoot(patterns.LIST_VIEW),
+    toListView: () => appRoot(''),
     toDetailView: ({ name, version, panel, withAppRoot = true }: DetailParams) => {
       // panel is optional, but `generatePath` won't accept `path: undefined`
       // so use this to pass `{ pkgkey }` or `{ pkgkey, panel }`

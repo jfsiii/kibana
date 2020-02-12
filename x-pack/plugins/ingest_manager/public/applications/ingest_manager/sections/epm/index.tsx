@@ -6,17 +6,16 @@
 
 import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-
 import { Home } from './screens/home';
 import { Detail } from './screens/detail';
 
 export const EPMApp: React.FC = () => (
-  <Router>
+  <Router basename={'/epm'}>
     <Switch>
-      <Route path="/epm/detail/:pkgkey/:panel?">
+      <Route path="/detail/:pkgkey/:panel?">
         <Detail />
       </Route>
-      <Route path="/epm/">
+      <Route path="/">
         <Home />
       </Route>
     </Switch>

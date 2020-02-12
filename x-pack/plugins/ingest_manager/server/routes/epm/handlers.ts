@@ -17,6 +17,7 @@ import {
   DeletePackageRequestSchema,
   DeletePackageResponse,
   EPM_API_ROOT,
+  PackageList,
 } from '../../../common';
 import { appContextService } from '../../services';
 import {
@@ -51,7 +52,7 @@ export const getListHandler: RequestHandler<
 > = async (context, request, response) => {
   try {
     const savedObjectsClient = context.core.savedObjects.client;
-    const res = await getPackages({
+    const res: PackageList = await getPackages({
       savedObjectsClient,
       category: request.query.category,
     });

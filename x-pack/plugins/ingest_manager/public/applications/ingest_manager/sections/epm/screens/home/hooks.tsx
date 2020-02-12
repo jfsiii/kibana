@@ -22,16 +22,6 @@ export function useCategoryPackages(selectedCategory: string) {
   ];
 }
 
-export function useAllPackages(selectedCategory: string, categoryPackages: PackageList) {
-  const [allPackages, setAllPackages] = useState<PackageList>([]);
-
-  useEffect(() => {
-    if (!selectedCategory) setAllPackages(categoryPackages);
-  }, [selectedCategory, categoryPackages]);
-
-  return [allPackages, setAllPackages] as [typeof allPackages, typeof setAllPackages];
-}
-
 export function useLocalSearch(allPackages: PackageList) {
   const localSearchRef = useRef<LocalSearch | null>(null);
 

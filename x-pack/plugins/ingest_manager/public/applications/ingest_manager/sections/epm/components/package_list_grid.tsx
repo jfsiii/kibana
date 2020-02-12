@@ -53,11 +53,13 @@ type GridColumnProps = {
 function GridColumn({ list }: GridColumnProps) {
   return (
     <EuiFlexGrid gutterSize="l" columns={3}>
-      {list.map(item => (
-        <EuiFlexItem key={`${item.name}-${item.version}`}>
-          <PackageCard {...item} />
-        </EuiFlexItem>
-      ))}
+      {Array.isArray(list)
+        ? list.map(item => (
+            <EuiFlexItem key={`${item.name}-${item.version}`}>
+              <PackageCard {...item} />
+            </EuiFlexItem>
+          ))
+        : null}
     </EuiFlexGrid>
   );
 }
