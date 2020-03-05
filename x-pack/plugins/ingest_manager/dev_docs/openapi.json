@@ -1436,7 +1436,7 @@
         }
       }
     },
-    "/fleet/agents{agentId}": {
+    "/fleet/agents/{agentId}": {
       "parameters": [
         {
           "schema": {
