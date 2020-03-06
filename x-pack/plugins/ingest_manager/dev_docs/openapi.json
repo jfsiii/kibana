@@ -826,9 +826,9 @@
         }
       }
     },
-    "/epm/package/{pkgkey}": {
+    "/epm/packages/{pkgkey}": {
       "get": {
-        "summary": "EPM - Package Info",
+        "summary": "EPM - Packages - Info",
         "tags": [],
         "responses": {
           "200": {
@@ -1176,43 +1176,9 @@
           "in": "path",
           "required": true
         }
-      ]
-    },
-    "/epm/list": {
-      "get": {
-        "summary": "EPM - List",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/SearchResult"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-epm-list"
-      }
-    },
-    "/epm/install/{pkgkey}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "pkgkey",
-          "in": "path",
-          "required": true
-        }
       ],
       "post": {
-        "summary": "EPM - Install",
+        "summary": "EPM - Packages - Install",
         "tags": [],
         "responses": {
           "200": {
@@ -1253,22 +1219,11 @@
             }
           }
         },
-        "operationId": "post-epm-install-pkgkey"
-      }
-    },
-    "/epm/delete/{pkgkey}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "pkgkey",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "post": {
-        "summary": "EPM - Delete",
+        "operationId": "post-epm-install-pkgkey",
+        "description": ""
+      },
+      "delete": {
+        "summary": "EPM - Packages - Delete",
         "tags": [],
         "responses": {
           "200": {
@@ -1311,6 +1266,29 @@
         },
         "operationId": "post-epm-delete-pkgkey"
       }
+    },
+    "/epm/packages": {
+      "get": {
+        "summary": "EPM - Packages - List",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SearchResult"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-epm-list"
+      },
+      "parameters": []
     },
     "/epm/categories": {
       "get": {
