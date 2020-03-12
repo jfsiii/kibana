@@ -4,11 +4,11 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { memo } from 'react';
-import { FormattedMessage } from '@kbn/i18n/react';
 import { EuiLink } from '@elastic/eui';
-import { useLink } from '../../../hooks';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { memo } from 'react';
 import { FLEET_AGENTS_PATH } from '../../../constants';
+import { useLink } from '../../../hooks';
 
 export const LinkedAgentCount = memo<{ count: number; agentConfigId: string }>(
   ({ count, agentConfigId }) => {

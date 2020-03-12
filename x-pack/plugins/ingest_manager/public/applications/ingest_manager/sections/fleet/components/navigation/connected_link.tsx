@@ -3,8 +3,8 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React from 'react';
 import { EuiLink } from '@elastic/eui';
+import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 export function ConnectedLinkComponent({

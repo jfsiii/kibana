@@ -7,8 +7,8 @@
 import { EuiButtonEmpty, EuiButtonEmptyProps } from '@elastic/eui';
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { PackageInfo, entries, DetailViewPanelName, InstallStatus } from '../../../../types';
-import { useLinks, useGetPackageInstallStatus } from '../../hooks';
+import { DetailViewPanelName, entries, InstallStatus, PackageInfo } from '../../../../types';
+import { useGetPackageInstallStatus, useLinks } from '../../hooks';
 
 export type NavLinkProps = Pick<PackageInfo, 'name' | 'version'> & {
   active: DetailViewPanelName;

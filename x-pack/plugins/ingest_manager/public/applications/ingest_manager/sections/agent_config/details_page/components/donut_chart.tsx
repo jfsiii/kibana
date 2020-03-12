@@ -4,9 +4,9 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { useEffect, useRef } from 'react';
-import d3 from 'd3';
 import { EuiFlexItem } from '@elastic/eui';
+import d3 from 'd3';
+import React, { useEffect, useRef } from 'react';
 
 interface DonutChartProps {
   data: {

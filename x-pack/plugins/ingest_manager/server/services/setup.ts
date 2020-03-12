@@ -5,20 +5,20 @@
  */
 
 import { SavedObjectsClientContract } from 'kibana/server';
-import { CallESAsCurrentUser } from '../types';
-import { agentConfigService } from './agent_config';
-import { outputService } from './output';
-import { ensureInstalledDefaultPackages } from './epm/packages/install';
 import {
-  packageToConfigDatasourceInputs,
-  Datasource,
   AgentConfig,
+  Datasource,
+  DEFAULT_AGENT_CONFIGS_PACKAGES,
   Installation,
   Output,
-  DEFAULT_AGENT_CONFIGS_PACKAGES,
+  packageToConfigDatasourceInputs,
 } from '../../common';
-import { getPackageInfo } from './epm/packages';
+import { CallESAsCurrentUser } from '../types';
+import { agentConfigService } from './agent_config';
 import { datasourceService } from './datasource';
+import { getPackageInfo } from './epm/packages';
+import { ensureInstalledDefaultPackages } from './epm/packages/install';
+import { outputService } from './output';
 
 export async function setup(
   soClient: SavedObjectsClientContract,

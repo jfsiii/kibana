@@ -5,15 +5,15 @@
  */
 
 import { HttpFetchQuery } from 'kibana/public';
-import { useRequest, sendRequest } from './use_request';
 import { epmRouteService } from '../../services';
 import {
-  GetCategoriesResponse,
-  GetPackagesResponse,
-  GetInfoResponse,
-  InstallPackageResponse,
   DeletePackageResponse,
+  GetCategoriesResponse,
+  GetInfoResponse,
+  GetPackagesResponse,
+  InstallPackageResponse,
 } from '../../types';
+import { sendRequest, useRequest } from './use_request';
 
 export const useGetCategories = () => {
   return useRequest<GetCategoriesResponse>({

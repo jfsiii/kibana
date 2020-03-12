@@ -3,8 +3,8 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import { Datasource, NewDatasource, FullAgentConfigDatasource } from '../types';
 import { DEFAULT_OUTPUT } from '../constants';
+import { Datasource, FullAgentConfigDatasource, NewDatasource } from '../types';
 
 export const storedDatasourceToAgentDatasource = (
   datasource: Datasource | NewDatasource

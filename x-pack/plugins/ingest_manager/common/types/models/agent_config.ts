@@ -7,9 +7,9 @@
 import { SavedObjectAttributes } from '../../../../../../src/core/public';
 import {
   Datasource,
-  DatasourcePackage,
   DatasourceInput,
   DatasourceInputStream,
+  DatasourcePackage,
 } from './datasource';
 import { Output } from './output';
 

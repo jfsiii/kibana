@@ -3,23 +3,23 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState } from 'react';
 import {
+  EuiButton,
+  EuiButtonEmpty,
+  EuiFlexGroup,
+  EuiFlexItem,
   EuiFlyout,
   EuiFlyoutBody,
+  EuiFlyoutFooter,
   EuiFlyoutHeader,
   EuiSpacer,
   EuiTitle,
-  EuiFlexGroup,
-  EuiFlexItem,
-  EuiButtonEmpty,
-  EuiButton,
-  EuiFlyoutFooter,
 } from '@elastic/eui';
 import { FormattedMessage } from '@kbn/i18n/react';
+import React, { useState } from 'react';
 import { AgentConfig } from '../../../../../types';
-import { APIKeySelection } from './key_selection';
 import { EnrollmentInstructions } from './instructions';
+import { APIKeySelection } from './key_selection';
 
 interface Props {
   onClose: () => void;

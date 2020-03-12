@@ -6,13 +6,13 @@
 
 import {
   AssetReference,
+  CallESAsCurrentUser,
   Dataset,
   ElasticsearchAssetType,
   IngestAssetType,
   RegistryPackage,
 } from '../../../../types';
 import * as Registry from '../../registry';
-import { CallESAsCurrentUser } from '../../../../types';
 
 interface RewriteSubstitution {
   source: string;

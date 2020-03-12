@@ -3,10 +3,10 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { EuiComboBox, EuiFieldText, EuiFormRow, EuiText } from '@elastic/eui';
+import { FormattedMessage } from '@kbn/i18n/react';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { FormattedMessage } from '@kbn/i18n/react';
-import { EuiFormRow, EuiFieldText, EuiComboBox, EuiText } from '@elastic/eui';
 import { RegistryVarsEntry } from '../../../../types';
 
 export const DatasourceInputVarField: React.FunctionComponent<{

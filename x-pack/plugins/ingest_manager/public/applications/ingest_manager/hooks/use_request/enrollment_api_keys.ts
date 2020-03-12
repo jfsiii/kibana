@@ -4,9 +4,9 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { useRequest, UseRequestConfig } from './use_request';
 import { enrollmentAPIKeyRouteService } from '../../services';
-import { GetOneEnrollmentAPIKeyResponse, GetEnrollmentAPIKeysResponse } from '../../types';
+import { GetEnrollmentAPIKeysResponse, GetOneEnrollmentAPIKeyResponse } from '../../types';
+import { useRequest, UseRequestConfig } from './use_request';
 
 type RequestOptions = Pick<Partial<UseRequestConfig>, 'pollIntervalMs'>;
 

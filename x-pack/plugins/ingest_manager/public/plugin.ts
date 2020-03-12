@@ -3,19 +3,18 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { i18n } from '@kbn/i18n';
 import {
   AppMountParameters,
   CoreSetup,
+  CoreStart,
   Plugin,
   PluginInitializerContext,
-  CoreStart,
 } from 'kibana/public';
-import { i18n } from '@kbn/i18n';
 import { DEFAULT_APP_CATEGORIES } from '../../../../src/core/utils';
 import { DataPublicPluginSetup, DataPublicPluginStart } from '../../../../src/plugins/data/public';
 import { LicensingPluginSetup } from '../../licensing/public';
 import { PLUGIN_ID } from '../common/constants';
-
 import { IngestManagerConfigType } from '../common/types';
 
 export { IngestManagerConfigType } from '../common/types';

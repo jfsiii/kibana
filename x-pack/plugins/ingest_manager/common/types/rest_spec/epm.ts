@@ -8,8 +8,8 @@ import {
   AssetReference,
   CategorySummaryList,
   Installable,
-  RegistryPackage,
   PackageInfo,
+  RegistryPackage,
 } from '../models/epm';
 
 export interface GetCategoriesResponse {

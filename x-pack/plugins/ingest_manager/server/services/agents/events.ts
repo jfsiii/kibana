@@ -6,7 +6,7 @@
 
 import { SavedObjectsClientContract } from 'kibana/server';
 import { AGENT_EVENT_SAVED_OBJECT_TYPE } from '../../constants';
-import { AgentEventSOAttributes, AgentEvent } from '../../types';
+import { AgentEvent, AgentEventSOAttributes } from '../../types';
 
 export async function getAgentEvents(
   soClient: SavedObjectsClientContract,

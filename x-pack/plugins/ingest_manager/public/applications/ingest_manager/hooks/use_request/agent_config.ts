@@ -4,18 +4,18 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { HttpFetchQuery } from 'kibana/public';
-import { useRequest, sendRequest } from './use_request';
 import { agentConfigRouteService } from '../../services';
 import {
-  GetAgentConfigsResponse,
-  GetOneAgentConfigResponse,
   CreateAgentConfigRequest,
   CreateAgentConfigResponse,
-  UpdateAgentConfigRequest,
-  UpdateAgentConfigResponse,
   DeleteAgentConfigsRequest,
   DeleteAgentConfigsResponse,
+  GetAgentConfigsResponse,
+  GetOneAgentConfigResponse,
+  UpdateAgentConfigRequest,
+  UpdateAgentConfigResponse,
 } from '../../types';
+import { sendRequest, useRequest } from './use_request';
 
 export const useGetAgentConfigs = (query: HttpFetchQuery = {}) => {
   return useRequest<GetAgentConfigsResponse>({

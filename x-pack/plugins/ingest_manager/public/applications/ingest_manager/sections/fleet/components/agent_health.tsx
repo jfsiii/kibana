@@ -3,9 +3,9 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React from 'react';
-import { FormattedMessage, FormattedRelative } from '@kbn/i18n/react';
 import { EuiHealth, EuiToolTip } from '@elastic/eui';
+import { FormattedMessage, FormattedRelative } from '@kbn/i18n/react';
+import React from 'react';
 import { Agent } from '../../../types';
 
 interface Props {

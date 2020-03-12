@@ -5,8 +5,8 @@
  */
 
 import { SavedObjectsClientContract } from 'kibana/server';
-import { Agent, AgentSOAttributes } from '../../types';
 import { AGENT_SAVED_OBJECT_TYPE } from '../../constants';
+import { Agent, AgentSOAttributes } from '../../types';
 
 export async function acknowledgeAgentActions(
   soClient: SavedObjectsClientContract,

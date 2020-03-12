@@ -4,24 +4,24 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { useState } from 'react';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
-  EuiButtonEmpty,
-  EuiPopover,
-  EuiFormRow,
   EuiButton,
-  EuiFlexItem,
+  EuiButtonEmpty,
   EuiFieldText,
   EuiFlexGroup,
+  EuiFlexItem,
   EuiForm,
+  EuiFormRow,
+  EuiPopover,
 } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
 import { AxiosError } from 'axios';
-import { useAgentRefresh } from '../hooks';
-import { useInput, sendRequest } from '../../../../hooks';
-import { Agent } from '../../../../types';
+import React, { useState } from 'react';
+import { sendRequest, useInput } from '../../../../hooks';
 import { agentRouteService } from '../../../../services';
+import { Agent } from '../../../../types';
+import { useAgentRefresh } from '../hooks';
 
 function useAddMetadataForm(agent: Agent, done: () => void) {
   const refreshAgent = useAgentRefresh();

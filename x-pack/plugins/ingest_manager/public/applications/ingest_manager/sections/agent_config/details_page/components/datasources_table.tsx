@@ -3,10 +3,10 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React from 'react';
+import { EuiBadge, EuiInMemoryTable, EuiInMemoryTableProps } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n/react';
-import { EuiInMemoryTable, EuiInMemoryTableProps, EuiBadge } from '@elastic/eui';
+import React from 'react';
 import { Datasource } from '../../../../types';
 
 type DatasourceWithConfig = Datasource & { configs?: string[] };

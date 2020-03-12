@@ -4,13 +4,13 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { useState, useEffect } from 'react';
-import { IFieldType } from 'src/plugins/data/public';
 // @ts-ignore
-import { EuiSuggest, EuiSuggestItemProps } from '@elastic/eui';
+import { EuiSuggest } from '@elastic/eui';
+import React, { useEffect, useState } from 'react';
+import { IFieldType } from 'src/plugins/data/public';
+import { INDEX_NAME } from '../constants';
 import { useDebounce } from '../hooks';
 import { useStartDeps } from '../hooks/use_deps';
-import { INDEX_NAME } from '../constants';
 
 const DEBOUNCE_SEARCH_MS = 150;
 const HIDDEN_FIELDS = ['agents.actions'];

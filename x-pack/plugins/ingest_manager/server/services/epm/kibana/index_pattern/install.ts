@@ -6,10 +6,10 @@
 
 import { SavedObjectsClientContract } from 'kibana/server';
 import { INDEX_PATTERN_SAVED_OBJECT_TYPE } from '../../../../constants';
-import * as Registry from '../../registry';
-import { loadFieldsFromYaml, Fields, Field } from '../../fields/field';
-import { getPackageKeysByStatus } from '../../packages/get';
 import { InstallationStatus, RegistryPackage } from '../../../../types';
+import { Field, Fields, loadFieldsFromYaml } from '../../fields/field';
+import { getPackageKeysByStatus } from '../../packages/get';
+import * as Registry from '../../registry';
 
 interface FieldFormatMap {
   [key: string]: FieldFormatMapItem;

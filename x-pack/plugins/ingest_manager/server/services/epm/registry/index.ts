@@ -6,6 +6,7 @@
 
 import { Response } from 'node-fetch';
 import { URL } from 'url';
+import { appContextService } from '../../';
 import {
   AssetParts,
   AssetsGroupedByServiceByType,
@@ -13,10 +14,9 @@ import {
   CategorySummaryList,
   KibanaAssetType,
   RegistryPackage,
-  RegistrySearchResults,
   RegistrySearchResult,
+  RegistrySearchResults,
 } from '../../../types';
-import { appContextService } from '../../';
 import { cacheGet, cacheSet } from './cache';
 import { ArchiveEntry, untarBuffer } from './extract';
 import { fetchUrl, getResponse, getResponseStream } from './requests';

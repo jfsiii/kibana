@@ -4,17 +4,17 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { IRouter } from 'kibana/server';
-import { PLUGIN_ID, DATASOURCE_API_ROUTES } from '../../constants';
+import { DATASOURCE_API_ROUTES, PLUGIN_ID } from '../../constants';
 import {
+  CreateDatasourceRequestSchema,
   GetDatasourcesRequestSchema,
   GetOneDatasourceRequestSchema,
-  CreateDatasourceRequestSchema,
   UpdateDatasourceRequestSchema,
 } from '../../types';
 import {
+  createDatasourceHandler,
   getDatasourcesHandler,
   getOneDatasourceHandler,
-  createDatasourceHandler,
   updateDatasourceHandler,
 } from './handlers';
 

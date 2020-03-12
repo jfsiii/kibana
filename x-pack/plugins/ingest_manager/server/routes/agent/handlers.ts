@@ -4,32 +4,32 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { RequestHandler, KibanaRequest } from 'kibana/server';
 import { TypeOf } from '@kbn/config-schema';
+import { KibanaRequest, RequestHandler } from 'kibana/server';
 import {
   GetAgentsResponse,
-  GetOneAgentResponse,
+  GetAgentStatusResponse,
   GetOneAgentEventsResponse,
+  GetOneAgentResponse,
   PostAgentCheckinResponse,
   PostAgentEnrollResponse,
   PostAgentUnenrollResponse,
-  GetAgentStatusResponse,
 } from '../../../common/types';
-import {
-  GetAgentsRequestSchema,
-  GetOneAgentRequestSchema,
-  UpdateAgentRequestSchema,
-  DeleteAgentRequestSchema,
-  GetOneAgentEventsRequestSchema,
-  PostAgentCheckinRequestSchema,
-  PostAgentEnrollRequestSchema,
-  PostAgentAcksRequestSchema,
-  PostAgentUnenrollRequestSchema,
-  GetAgentStatusRequestSchema,
-} from '../../types';
 import * as AgentService from '../../services/agents';
 import * as APIKeyService from '../../services/api_keys';
 import { appContextService } from '../../services/app_context';
+import {
+  DeleteAgentRequestSchema,
+  GetAgentsRequestSchema,
+  GetAgentStatusRequestSchema,
+  GetOneAgentEventsRequestSchema,
+  GetOneAgentRequestSchema,
+  PostAgentAcksRequestSchema,
+  PostAgentCheckinRequestSchema,
+  PostAgentEnrollRequestSchema,
+  PostAgentUnenrollRequestSchema,
+  UpdateAgentRequestSchema,
+} from '../../types';
 
 function getInternalUserSOClient(request: KibanaRequest) {
   // soClient as kibana internal users, be carefull on how you use it, security is not enabled

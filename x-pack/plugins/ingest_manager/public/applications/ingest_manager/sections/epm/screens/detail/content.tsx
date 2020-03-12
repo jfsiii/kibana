@@ -11,10 +11,10 @@ import { DEFAULT_PANEL, DetailParams } from '.';
 import { PackageInfo } from '../../../../types';
 import { AssetsFacetGroup } from '../../components/assets_facet_group';
 import { Requirements } from '../../components/requirements';
+import { DataSourcesPanel } from './data_sources_panel';
 import { CenterColumn, LeftColumn, RightColumn } from './layout';
 import { OverviewPanel } from './overview_panel';
 import { SideNavLinks } from './side_nav_links';
-import { DataSourcesPanel } from './data_sources_panel';
 
 type ContentProps = PackageInfo & Pick<DetailParams, 'panel'> & { hasIconPanel: boolean };
 export function Content(props: ContentProps) {

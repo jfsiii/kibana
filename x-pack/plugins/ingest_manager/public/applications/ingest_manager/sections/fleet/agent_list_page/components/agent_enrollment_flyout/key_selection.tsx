@@ -3,23 +3,23 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState } from 'react';
-import { i18n } from '@kbn/i18n';
 import {
+  EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
   EuiFormRow,
+  EuiLink,
   EuiSelect,
   EuiSpacer,
   EuiText,
-  EuiLink,
-  EuiFieldText,
 } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n/react';
-import { useEnrollmentApiKeys } from '../enrollment_api_keys';
-import { AgentConfig } from '../../../../../types';
-import { useInput, useCore, sendRequest } from '../../../../../hooks';
+import React, { useState } from 'react';
+import { sendRequest, useCore, useInput } from '../../../../../hooks';
 import { enrollmentAPIKeyRouteService } from '../../../../../services';
+import { AgentConfig } from '../../../../../types';
+import { useEnrollmentApiKeys } from '../enrollment_api_keys';
 
 interface Props {
   onKeyChange: (keyId: string | null) => void;

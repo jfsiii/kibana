@@ -5,11 +5,11 @@
  */
 import { HttpSetup } from 'kibana/public';
 import {
+  sendRequest as _sendRequest,
   SendRequestConfig,
   SendRequestResponse,
-  UseRequestConfig as _UseRequestConfig,
-  sendRequest as _sendRequest,
   useRequest as _useRequest,
+  UseRequestConfig as _UseRequestConfig,
 } from '../../../../../../../../src/plugins/es_ui_shared/public';
 
 let httpClient: HttpSetup;

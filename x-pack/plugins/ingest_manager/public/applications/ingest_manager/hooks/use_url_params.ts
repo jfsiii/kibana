@@ -4,9 +4,9 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { useLocation } from 'react-router-dom';
 import { parse, stringify } from 'query-string';
 import { useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 /**
  * Parses `search` params and returns an object with them along with a `toUrlParams` function

@@ -4,9 +4,9 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { useState } from 'react';
 import { EuiFieldText, EuiForm, EuiFormRow } from '@elastic/eui';
 import { FormattedMessage } from '@kbn/i18n/react';
+import React, { useState } from 'react';
 import { AgentConfig } from '../../../../types';
 
 interface ValidationResults {

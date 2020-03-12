@@ -4,17 +4,17 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { useRequest, UseRequestConfig, sendRequest } from './use_request';
 import { agentRouteService } from '../../services';
 import {
-  GetOneAgentResponse,
-  GetOneAgentEventsResponse,
-  GetOneAgentEventsRequest,
   GetAgentsRequest,
   GetAgentsResponse,
   GetAgentStatusRequest,
   GetAgentStatusResponse,
+  GetOneAgentEventsRequest,
+  GetOneAgentEventsResponse,
+  GetOneAgentResponse,
 } from '../../types';
+import { sendRequest, useRequest, UseRequestConfig } from './use_request';
 
 type RequestOptions = Pick<Partial<UseRequestConfig>, 'pollIntervalMs'>;
 

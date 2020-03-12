@@ -14,17 +14,16 @@ import {
 } from '../../../../common/types/models/epm';
 
 export {
+  findInstalledPackageByName,
   getCategories,
   getFile,
-  getInstallationObject,
   getInstallation,
+  getInstallationObject,
   getPackageInfo,
   getPackages,
   SearchParams,
-  findInstalledPackageByName,
 } from './get';
-
-export { installKibanaAssets, installPackage, ensureInstalledPackage } from './install';
+export { ensureInstalledPackage, installKibanaAssets, installPackage } from './install';
 export { removeInstallation } from './remove';
 
 export class PackageNotInstalledError extends Error {

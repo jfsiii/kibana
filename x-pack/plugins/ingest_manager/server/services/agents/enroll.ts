@@ -6,10 +6,10 @@
 
 import Boom from 'boom';
 import { SavedObjectsClientContract } from 'kibana/server';
-import { AgentType, Agent, AgentSOAttributes } from '../../types';
-import { savedObjectToAgent } from './saved_objects';
 import { AGENT_SAVED_OBJECT_TYPE } from '../../constants';
+import { Agent, AgentSOAttributes, AgentType } from '../../types';
 import * as APIKeyService from '../api_keys';
+import { savedObjectToAgent } from './saved_objects';
 
 export async function enroll(
   soClient: SavedObjectsClientContract,

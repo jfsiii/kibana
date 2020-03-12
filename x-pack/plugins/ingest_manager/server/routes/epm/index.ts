@@ -4,22 +4,22 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { IRouter } from 'kibana/server';
-import { PLUGIN_ID, EPM_API_ROUTES } from '../../constants';
+import { EPM_API_ROUTES, PLUGIN_ID } from '../../constants';
 import {
-  getCategoriesHandler,
-  getListHandler,
-  getFileHandler,
-  getInfoHandler,
-  installPackageHandler,
-  deletePackageHandler,
-} from './handlers';
-import {
-  GetPackagesRequestSchema,
+  DeletePackageRequestSchema,
   GetFileRequestSchema,
   GetInfoRequestSchema,
+  GetPackagesRequestSchema,
   InstallPackageRequestSchema,
-  DeletePackageRequestSchema,
 } from '../../types';
+import {
+  deletePackageHandler,
+  getCategoriesHandler,
+  getFileHandler,
+  getInfoHandler,
+  getListHandler,
+  installPackageHandler,
+} from './handlers';
 
 export const registerRoutes = (router: IRouter) => {
   router.get(

@@ -4,12 +4,12 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import {
-  PackageInfo,
-  RegistryDatasource,
-  RegistryVarsEntry,
   Datasource,
   DatasourceInput,
   DatasourceInputStream,
+  PackageInfo,
+  RegistryDatasource,
+  RegistryVarsEntry,
 } from '../types';
 
 /*

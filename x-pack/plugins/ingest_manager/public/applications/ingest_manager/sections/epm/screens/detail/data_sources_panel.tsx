@@ -4,11 +4,11 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { Fragment } from 'react';
 import { EuiTitle } from '@elastic/eui';
+import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useLinks, useGetPackageInstallStatus } from '../../hooks';
 import { InstallStatus } from '../../../../types';
+import { useGetPackageInstallStatus, useLinks } from '../../hooks';
 
 interface DataSourcesPanelProps {
   name: string;

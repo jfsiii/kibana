@@ -6,47 +6,48 @@
 import { ScopedClusterClient } from 'src/core/server/';
 
 export {
-  // Object types
   Agent,
+  AgentAction,
+  AgentConfig,
+  AgentConfigStatus,
+  AgentEvent,
+  AgentEventSOAttributes,
   AgentSOAttributes,
   AgentStatus,
   AgentType,
-  AgentEvent,
-  AgentEventSOAttributes,
-  AgentAction,
-  Datasource,
-  NewDatasource,
-  FullAgentConfigDatasource,
-  FullAgentConfig,
-  AgentConfig,
-  NewAgentConfig,
-  AgentConfigStatus,
-  Output,
-  NewOutput,
-  OutputType,
-  EnrollmentAPIKey,
-  EnrollmentAPIKeySOAttributes,
-  Installation,
-  InstallationStatus,
-  PackageInfo,
-  RegistryVarsEntry,
-  Dataset,
-  AssetReference,
-  ElasticsearchAssetType,
-  IngestAssetType,
-  RegistryPackage,
-  AssetType,
-  Installable,
-  KibanaAssetType,
   AssetParts,
+  AssetReference,
   AssetsGroupedByServiceByType,
+  AssetType,
   CategoryId,
   CategorySummaryList,
-  IndexTemplate,
-  RegistrySearchResults,
-  RegistrySearchResult,
+  Dataset,
+  Datasource,
   DefaultPackages,
+  ElasticsearchAssetType,
+  EnrollmentAPIKey,
+  EnrollmentAPIKeySOAttributes,
+  FullAgentConfig,
+  FullAgentConfigDatasource,
+  IndexTemplate,
+  IngestAssetType,
+  Installable,
+  Installation,
+  InstallationStatus,
+  KibanaAssetType,
+  NewAgentConfig,
+  NewDatasource,
+  NewOutput,
+  Output,
+  OutputType,
+  PackageInfo,
+  RegistryPackage,
+  RegistrySearchResult,
+  RegistrySearchResults,
+  RegistryVarsEntry,
 } from '../../common';
+export * from './models';
+export * from './rest_spec';
 
 export type CallESAsCurrentUser = ScopedClusterClient['callAsCurrentUser'];
 
@@ -54,6 +55,3 @@ export type AgentConfigUpdateHandler = (
   action: 'created' | 'updated' | 'deleted',
   agentConfigId: string
 ) => Promise<void>;
-
-export * from './models';
-export * from './rest_spec';

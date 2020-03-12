@@ -3,9 +3,9 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { SavedObjectsServiceStart } from 'kibana/server';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { SavedObjectsServiceStart } from 'kibana/server';
 import { EncryptedSavedObjectsPluginStart } from '../../../encrypted_saved_objects/server';
 import { SecurityPluginSetup } from '../../../security/server';
 import { IngestManagerConfigType } from '../../common';

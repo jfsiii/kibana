@@ -4,6 +4,6 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-export { AgentConfigForm, agentConfigFormValidation } from './config_form';
 export { AgentConfigDeleteProvider } from './config_delete_provider';
+export { AgentConfigForm, agentConfigFormValidation } from './config_form';
 export { LinkedAgentCount } from './linked_agent_count';

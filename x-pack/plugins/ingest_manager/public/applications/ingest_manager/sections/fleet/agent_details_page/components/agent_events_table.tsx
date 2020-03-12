@@ -4,22 +4,20 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { useState } from 'react';
 import {
   EuiBasicTable,
-  // @ts-ignore
-  EuiSuggest,
-  EuiFlexGroup,
   EuiButton,
-  EuiSpacer,
+  EuiFlexGroup,
   EuiFlexItem,
+  EuiSpacer,
   EuiTitle,
 } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage, FormattedTime } from '@kbn/i18n/react';
-import { Agent, AgentEvent } from '../../../../types';
-import { usePagination, useGetOneAgentEvents } from '../../../../hooks';
+import React, { useState } from 'react';
 import { SearchBar } from '../../../../components/search_bar';
+import { useGetOneAgentEvents, usePagination } from '../../../../hooks';
+import { Agent, AgentEvent } from '../../../../types';
 
 function useSearch() {
   const [state, setState] = useState<{ search: string }>({

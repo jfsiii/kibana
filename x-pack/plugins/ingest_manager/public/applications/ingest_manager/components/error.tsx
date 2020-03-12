@@ -3,8 +3,8 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React from 'react';
 import { EuiCallOut } from '@elastic/eui';
+import React from 'react';
 
 export const Error: React.FunctionComponent<{
   title: JSX.Element;

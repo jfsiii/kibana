@@ -7,12 +7,11 @@ import { EuiPage, EuiPageBody, EuiPageProps, ICON_TYPES } from '@elastic/eui';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { DetailViewPanelName, InstallStatus } from '../../../../types';
-import { PackageInfo } from '../../../../types';
+import { sendGetPackageInfoByKey } from '../../../../hooks';
+import { DetailViewPanelName, InstallStatus, PackageInfo } from '../../../../types';
 import { useSetPackageInstallStatus } from '../../hooks';
 import { Content } from './content';
 import { Header } from './header';
-import { sendGetPackageInfoByKey } from '../../../../hooks';
 
 export const DEFAULT_PANEL: DetailViewPanelName = 'overview';
 

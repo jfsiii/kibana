@@ -4,8 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { useContext } from 'react';
 import { CoreStart } from 'kibana/public';
+import React, { useContext } from 'react';
 
 export const CoreContext = React.createContext<CoreStart | null>(null);
 

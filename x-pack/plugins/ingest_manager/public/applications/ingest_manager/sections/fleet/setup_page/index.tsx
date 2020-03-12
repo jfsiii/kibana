@@ -3,21 +3,21 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState } from 'react';
 import {
-  EuiPageBody,
-  EuiPageContent,
-  EuiForm,
-  EuiFormRow,
-  EuiFieldText,
-  EuiFieldPassword,
-  EuiText,
   EuiButton,
   EuiCallOut,
-  EuiTitle,
+  EuiFieldPassword,
+  EuiFieldText,
+  EuiForm,
+  EuiFormRow,
+  EuiPageBody,
+  EuiPageContent,
   EuiSpacer,
+  EuiText,
+  EuiTitle,
 } from '@elastic/eui';
-import { sendRequest, useInput, useCore } from '../../../hooks';
+import React, { useState } from 'react';
+import { sendRequest, useCore, useInput } from '../../../hooks';
 import { fleetSetupRouteService } from '../../../services';
 
 export const SetupPage: React.FunctionComponent<{

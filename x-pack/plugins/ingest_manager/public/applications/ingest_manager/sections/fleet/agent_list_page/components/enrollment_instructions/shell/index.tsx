@@ -3,7 +3,6 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState } from 'react';
 import {
   EuiButtonEmpty,
   EuiContextMenuItem,
@@ -12,6 +11,7 @@ import {
   EuiFieldText,
   EuiPopover,
 } from '@elastic/eui';
+import React, { useState } from 'react';
 import { EnrollmentAPIKey } from '../../../../../../types';
 
 // No need for i18n as these are platform names

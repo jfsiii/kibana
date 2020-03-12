@@ -4,8 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { sendRequest } from './use_request';
 import { setupRouteService } from '../../services';
+import { sendRequest } from './use_request';
 
 export const sendSetup = () => {
   return sendRequest({

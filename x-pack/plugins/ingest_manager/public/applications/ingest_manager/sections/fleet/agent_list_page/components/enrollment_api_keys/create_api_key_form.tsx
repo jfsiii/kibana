@@ -4,20 +4,20 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React from 'react';
 import {
+  EuiButton,
+  EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
   EuiFormRow,
-  EuiFieldText,
-  EuiButton,
   EuiSelect,
 } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n/react';
-import { useInput, sendRequest } from '../../../../../hooks';
-import { useConfigs } from './hooks';
+import React from 'react';
+import { sendRequest, useInput } from '../../../../../hooks';
 import { enrollmentAPIKeyRouteService } from '../../../../../services';
+import { useConfigs } from './hooks';
 
 export const CreateApiKeyForm: React.FunctionComponent<{ onChange: () => void }> = ({
   onChange,

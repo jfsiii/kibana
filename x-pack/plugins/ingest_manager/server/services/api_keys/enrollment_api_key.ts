@@ -4,12 +4,12 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
+import { SavedObject, SavedObjectsClientContract } from 'kibana/server';
 import uuid from 'uuid';
-import { SavedObjectsClientContract, SavedObject } from 'kibana/server';
-import { EnrollmentAPIKey, EnrollmentAPIKeySOAttributes } from '../../types';
 import { ENROLLMENT_API_KEYS_SAVED_OBJECT_TYPE } from '../../constants';
-import { createAPIKey, invalidateAPIKey } from './security';
+import { EnrollmentAPIKey, EnrollmentAPIKeySOAttributes } from '../../types';
 import { agentConfigService } from '../agent_config';
+import { createAPIKey, invalidateAPIKey } from './security';
 
 export async function listEnrollmentApiKeys(
   soClient: SavedObjectsClientContract,

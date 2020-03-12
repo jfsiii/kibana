@@ -4,11 +4,11 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { Fragment, useRef, useState } from 'react';
 import { EuiConfirmModal, EuiOverlayMask } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n/react';
-import { sendDeleteAgentConfigs, useCore, sendRequest } from '../../../hooks';
+import React, { Fragment, useRef, useState } from 'react';
+import { sendDeleteAgentConfigs, sendRequest, useCore } from '../../../hooks';
 
 interface Props {
   children: (deleteAgentConfigs: deleteAgentConfigs) => React.ReactElement;

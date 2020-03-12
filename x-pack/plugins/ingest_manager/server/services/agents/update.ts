@@ -5,8 +5,8 @@
  */
 
 import { SavedObjectsClientContract } from 'kibana/server';
-import { listAgents } from './crud';
 import { AGENT_SAVED_OBJECT_TYPE } from '../../constants';
+import { listAgents } from './crud';
 import { unenrollAgents } from './unenroll';
 
 export async function updateAgentsForPolicyId(

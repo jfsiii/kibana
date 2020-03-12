@@ -4,11 +4,11 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { IRouter } from 'kibana/server';
-import { PLUGIN_ID, FLEET_SETUP_API_ROUTES, SETUP_API_ROUTE } from '../../constants';
-import { GetFleetSetupRequestSchema, CreateFleetSetupRequestSchema } from '../../types';
+import { FLEET_SETUP_API_ROUTES, PLUGIN_ID, SETUP_API_ROUTE } from '../../constants';
+import { CreateFleetSetupRequestSchema, GetFleetSetupRequestSchema } from '../../types';
 import {
-  getFleetSetupHandler,
   createFleetSetupHandler,
+  getFleetSetupHandler,
   ingestManagerSetupHandler,
 } from './handlers';
 

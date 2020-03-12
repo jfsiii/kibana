@@ -3,13 +3,13 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { EuiFlexGroup, EuiFlexItem, EuiIcon, EuiTab, EuiTabs } from '@elastic/eui';
+import { FormattedMessage } from '@kbn/i18n/react';
 import React from 'react';
 import styled from 'styled-components';
-import { EuiTabs, EuiTab, EuiFlexGroup, EuiFlexItem, EuiIcon } from '@elastic/eui';
-import { FormattedMessage } from '@kbn/i18n/react';
+import { AGENT_CONFIG_PATH, EPM_PATH, FLEET_PATH } from '../constants';
+import { useConfig, useLink } from '../hooks';
 import { Section } from '../sections';
-import { useLink, useConfig } from '../hooks';
-import { EPM_PATH, FLEET_PATH, AGENT_CONFIG_PATH } from '../constants';
 
 interface Props {
   section?: Section;

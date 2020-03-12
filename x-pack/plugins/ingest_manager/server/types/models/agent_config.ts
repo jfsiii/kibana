@@ -4,8 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { schema } from '@kbn/config-schema';
-import { DatasourceSchema } from './datasource';
 import { AgentConfigStatus } from '../../../common';
+import { DatasourceSchema } from './datasource';
 
 const AgentConfigBaseSchema = {
   name: schema.string(),

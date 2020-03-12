@@ -4,19 +4,18 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { SavedObjectsClientContract, SavedObjectsBulkCreateObject } from 'kibana/server';
+import { SavedObjectsBulkCreateObject, SavedObjectsClientContract } from 'kibana/server';
 import uuid from 'uuid';
+import { AGENT_EVENT_SAVED_OBJECT_TYPE, AGENT_SAVED_OBJECT_TYPE } from '../../constants';
 import {
   Agent,
-  AgentEvent,
   AgentAction,
-  AgentSOAttributes,
+  AgentEvent,
   AgentEventSOAttributes,
+  AgentSOAttributes,
 } from '../../types';
-
 import { agentConfigService } from '../agent_config';
 import * as APIKeysService from '../api_keys';
-import { AGENT_SAVED_OBJECT_TYPE, AGENT_EVENT_SAVED_OBJECT_TYPE } from '../../constants';
 
 export async function agentCheckin(
   soClient: SavedObjectsClientContract,

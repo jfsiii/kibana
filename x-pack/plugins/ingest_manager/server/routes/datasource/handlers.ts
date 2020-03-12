@@ -5,15 +5,15 @@
  */
 import { TypeOf } from '@kbn/config-schema';
 import { RequestHandler } from 'kibana/server';
-import { appContextService, datasourceService, agentConfigService } from '../../services';
+import { CreateDatasourceResponse } from '../../../common';
+import { agentConfigService, appContextService, datasourceService } from '../../services';
 import { ensureInstalledPackage } from '../../services/epm/packages';
 import {
+  CreateDatasourceRequestSchema,
   GetDatasourcesRequestSchema,
   GetOneDatasourceRequestSchema,
-  CreateDatasourceRequestSchema,
   UpdateDatasourceRequestSchema,
 } from '../../types';
-import { CreateDatasourceResponse } from '../../../common';
 
 export const getDatasourcesHandler: RequestHandler<
   undefined,

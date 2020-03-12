@@ -3,10 +3,10 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { EuiFlexGroup, EuiFlexItem, EuiSpacer, EuiTab, EuiTabs } from '@elastic/eui';
+import { Props as EuiTabProps } from '@elastic/eui/src/components/tabs/tab';
 import React from 'react';
 import styled from 'styled-components';
-import { EuiFlexGroup, EuiFlexItem, EuiTabs, EuiTab, EuiSpacer } from '@elastic/eui';
-import { Props as EuiTabProps } from '@elastic/eui/src/components/tabs/tab';
 
 const Container = styled.div`
   border-bottom: ${props => props.theme.eui.euiBorderThin};

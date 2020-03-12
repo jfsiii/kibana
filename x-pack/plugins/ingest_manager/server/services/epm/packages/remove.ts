@@ -6,10 +6,14 @@
 
 import { SavedObjectsClientContract } from 'src/core/server/';
 import { PACKAGES_SAVED_OBJECT_TYPE } from '../../../constants';
-import { AssetReference, AssetType, ElasticsearchAssetType } from '../../../types';
-import { CallESAsCurrentUser } from '../../../types';
-import { getInstallation, savedObjectTypes } from './index';
+import {
+  AssetReference,
+  AssetType,
+  CallESAsCurrentUser,
+  ElasticsearchAssetType,
+} from '../../../types';
 import { installIndexPatterns } from '../kibana/index_pattern/install';
+import { getInstallation, savedObjectTypes } from './index';
 
 export async function removeInstallation(options: {
   savedObjectsClient: SavedObjectsClientContract;

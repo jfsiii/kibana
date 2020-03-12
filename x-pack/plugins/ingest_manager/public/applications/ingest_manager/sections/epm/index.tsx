@@ -5,11 +5,11 @@
  */
 
 import React from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { useConfig } from '../../hooks';
 import { CreateDatasourcePage } from '../agent_config/create_datasource_page';
-import { Home } from './screens/home';
 import { Detail } from './screens/detail';
+import { Home } from './screens/home';
 
 export const EPMApp: React.FunctionComponent = () => {
   const { epm } = useConfig();

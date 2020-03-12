@@ -4,21 +4,21 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { RequestHandler } from 'kibana/server';
 import { TypeOf } from '@kbn/config-schema';
+import { RequestHandler } from 'kibana/server';
 import {
-  GetEnrollmentAPIKeysRequestSchema,
-  PostEnrollmentAPIKeyRequestSchema,
-  DeleteEnrollmentAPIKeyRequestSchema,
-  GetOneEnrollmentAPIKeyRequestSchema,
-} from '../../types';
-import {
+  DeleteEnrollmentAPIKeyResponse,
   GetEnrollmentAPIKeysResponse,
   GetOneEnrollmentAPIKeyResponse,
-  DeleteEnrollmentAPIKeyResponse,
   PostEnrollmentAPIKeyResponse,
 } from '../../../common';
 import * as APIKeyService from '../../services/api_keys';
+import {
+  DeleteEnrollmentAPIKeyRequestSchema,
+  GetEnrollmentAPIKeysRequestSchema,
+  GetOneEnrollmentAPIKeyRequestSchema,
+  PostEnrollmentAPIKeyRequestSchema,
+} from '../../types';
 
 export const getEnrollmentApiKeysHandler: RequestHandler<
   undefined,

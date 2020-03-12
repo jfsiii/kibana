@@ -3,21 +3,21 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState, Fragment } from 'react';
-import styled from 'styled-components';
-import { i18n } from '@kbn/i18n';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
-  EuiPanel,
+  EuiButtonIcon,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiHorizontalRule,
+  EuiPanel,
+  EuiSpacer,
   EuiSwitch,
   EuiText,
   EuiTextColor,
-  EuiButtonIcon,
-  EuiHorizontalRule,
-  EuiSpacer,
 } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { Fragment, useState } from 'react';
+import styled from 'styled-components';
 import { DatasourceInput, DatasourceInputStream, RegistryInput } from '../../../../types';
 import { DatasourceInputConfig } from './datasource_input_config';
 import { DatasourceInputStreamConfig } from './datasource_input_stream_config';

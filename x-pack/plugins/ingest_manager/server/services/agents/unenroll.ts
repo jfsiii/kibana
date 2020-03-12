@@ -5,8 +5,8 @@
  */
 
 import { SavedObjectsClientContract } from 'kibana/server';
-import { AgentSOAttributes } from '../../types';
 import { AGENT_SAVED_OBJECT_TYPE } from '../../constants';
+import { AgentSOAttributes } from '../../types';
 
 export async function unenrollAgents(
   soClient: SavedObjectsClientContract,

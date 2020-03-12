@@ -3,51 +3,51 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState, useCallback } from 'react';
-import styled, { CSSProperties } from 'styled-components';
 import {
   EuiBasicTable,
   EuiButton,
+  EuiButtonIcon,
+  EuiContextMenuItem,
+  EuiContextMenuPanel,
   EuiEmptyPrompt,
   EuiFilterButton,
   EuiFilterGroup,
   EuiFilterSelectItem,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiHealth,
+  EuiI18nNumber,
   EuiLink,
   EuiPopover,
   EuiSpacer,
+  EuiStat,
   EuiSwitch,
   EuiText,
   EuiTitle,
-  EuiStat,
-  EuiI18nNumber,
-  EuiHealth,
-  EuiButtonIcon,
-  EuiContextMenuPanel,
-  EuiContextMenuItem,
 } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage, FormattedRelative } from '@kbn/i18n/react';
-import { AgentEnrollmentFlyout } from './components';
-import { WithHeaderLayout } from '../../../layouts';
-import { Agent } from '../../../types';
+import React, { useCallback, useState } from 'react';
+import styled, { CSSProperties } from 'styled-components';
+import { SearchBar } from '../../../components/search_bar';
+import { AGENT_CONFIG_DETAILS_PATH, FLEET_AGENT_DETAIL_PATH } from '../../../constants';
 import {
-  usePagination,
   useCore,
   useGetAgentConfigs,
   useGetAgents,
-  useUrlParams,
   useLink,
+  usePagination,
+  useUrlParams,
 } from '../../../hooks';
+import { WithHeaderLayout } from '../../../layouts';
+import { AgentStatusKueryHelper } from '../../../services';
+import { Agent } from '../../../types';
+import { useGetAgentStatus } from '../../agent_config/details_page/hooks';
 import { ConnectedLink } from '../components';
-import { SearchBar } from '../../../components/search_bar';
 import { AgentHealth } from '../components/agent_health';
 import { AgentUnenrollProvider } from '../components/agent_unenroll_provider';
+import { AgentEnrollmentFlyout } from './components';
 import { DonutChart } from './components/donut_chart';
-import { useGetAgentStatus } from '../../agent_config/details_page/hooks';
-import { AgentStatusKueryHelper } from '../../../services';
-import { FLEET_AGENT_DETAIL_PATH, AGENT_CONFIG_DETAILS_PATH } from '../../../constants';
 
 const Divider = styled.div`
   width: 0;

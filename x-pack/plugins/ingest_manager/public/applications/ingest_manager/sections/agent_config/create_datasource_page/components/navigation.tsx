@@ -3,13 +3,13 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React from 'react';
-import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
-import { i18n } from '@kbn/i18n';
 import { EuiStepsHorizontal } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+import { CREATE_DATASOURCE_STEP_PATHS, WeightedCreateDatasourceSteps } from '../constants';
 import { CreateDatasourceFrom, CreateDatasourceStep } from '../types';
-import { WeightedCreateDatasourceSteps, CREATE_DATASOURCE_STEP_PATHS } from '../constants';
 
 const StepsHorizontal = styled(EuiStepsHorizontal)`
   background: none;

@@ -5,17 +5,16 @@
  */
 
 import { SavedObjectsClientContract } from 'kibana/server';
-import { listAgents } from './crud';
-import { AGENT_EVENT_SAVED_OBJECT_TYPE } from '../../constants';
-import { AgentStatus, Agent } from '../../types';
-
+import { AgentStatusKueryHelper } from '../../../common/services';
 import {
+  AGENT_EVENT_SAVED_OBJECT_TYPE,
   AGENT_POLLING_THRESHOLD_MS,
+  AGENT_TYPE_EPHEMERAL,
   AGENT_TYPE_PERMANENT,
   AGENT_TYPE_TEMPORARY,
-  AGENT_TYPE_EPHEMERAL,
 } from '../../constants';
-import { AgentStatusKueryHelper } from '../../../common/services';
+import { Agent, AgentStatus } from '../../types';
+import { listAgents } from './crud';
 
 export function getAgentStatus(agent: Agent, now: number = Date.now()): AgentStatus {
   const { type, last_checkin: lastCheckIn } = agent;

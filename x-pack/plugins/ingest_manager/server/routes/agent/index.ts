@@ -10,30 +10,30 @@
  */
 
 import { IRouter } from 'kibana/server';
-import { PLUGIN_ID, AGENT_API_ROUTES } from '../../constants';
+import { AGENT_API_ROUTES, PLUGIN_ID } from '../../constants';
 import {
-  GetAgentsRequestSchema,
-  GetOneAgentRequestSchema,
-  GetOneAgentEventsRequestSchema,
-  UpdateAgentRequestSchema,
   DeleteAgentRequestSchema,
+  GetAgentsRequestSchema,
+  GetAgentStatusRequestSchema,
+  GetOneAgentEventsRequestSchema,
+  GetOneAgentRequestSchema,
+  PostAgentAcksRequestSchema,
   PostAgentCheckinRequestSchema,
   PostAgentEnrollRequestSchema,
-  PostAgentAcksRequestSchema,
   PostAgentUnenrollRequestSchema,
-  GetAgentStatusRequestSchema,
+  UpdateAgentRequestSchema,
 } from '../../types';
 import {
-  getAgentsHandler,
-  getAgentHandler,
-  updateAgentHandler,
   deleteAgentHandler,
   getAgentEventsHandler,
+  getAgentHandler,
+  getAgentsHandler,
+  getAgentStatusForConfigHandler,
+  postAgentAcksHandler,
   postAgentCheckinHandler,
   postAgentEnrollHandler,
-  postAgentAcksHandler,
   postAgentsUnenrollHandler,
-  getAgentStatusForConfigHandler,
+  updateAgentHandler,
 } from './handlers';
 
 export const registerRoutes = (router: IRouter) => {

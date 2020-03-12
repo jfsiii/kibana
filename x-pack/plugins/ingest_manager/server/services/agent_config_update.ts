@@ -5,8 +5,8 @@
  */
 
 import { SavedObjectsClientContract } from 'kibana/server';
-import { generateEnrollmentAPIKey, deleteEnrollmentApiKeyForConfigId } from './api_keys';
-import { updateAgentsForPolicyId, unenrollForPolicyId } from './agents';
+import { unenrollForPolicyId, updateAgentsForPolicyId } from './agents';
+import { deleteEnrollmentApiKeyForConfigId, generateEnrollmentAPIKey } from './api_keys';
 
 export async function agentConfigUpdateEventHandler(
   soClient: SavedObjectsClientContract,

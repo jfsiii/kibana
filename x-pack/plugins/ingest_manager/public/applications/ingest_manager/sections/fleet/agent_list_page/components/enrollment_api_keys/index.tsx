@@ -3,18 +3,17 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState } from 'react';
-import { EuiBasicTable, EuiButtonEmpty, EuiSpacer, EuiPopover, EuiLink } from '@elastic/eui';
-import { FormattedMessage } from '@kbn/i18n/react';
+import { EuiBasicTable, EuiButtonEmpty, EuiLink, EuiPopover, EuiSpacer } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
-import { usePagination, sendRequest } from '../../../../../hooks';
-import { useEnrollmentApiKeys, useEnrollmentApiKey } from './hooks';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { useState } from 'react';
+import { sendRequest, useCore, usePagination } from '../../../../../hooks';
+import { enrollmentAPIKeyRouteService } from '../../../../../services';
+import { EnrollmentAPIKey } from '../../../../../types';
 import { ConfirmDeleteModal } from './confirm_delete_modal';
 import { CreateApiKeyForm } from './create_api_key_form';
-import { EnrollmentAPIKey } from '../../../../../types';
-import { useCore } from '../../../../../hooks';
-import { enrollmentAPIKeyRouteService } from '../../../../../services';
-export { useEnrollmentApiKeys, useEnrollmentApiKey } from './hooks';
+import { useEnrollmentApiKey, useEnrollmentApiKeys } from './hooks';
+export { useEnrollmentApiKey, useEnrollmentApiKeys } from './hooks';
 
 export const EnrollmentApiKeysTable: React.FunctionComponent<{
   onChange: () => void;

@@ -4,13 +4,13 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { Fragment, useRef, useState } from 'react';
 import { EuiConfirmModal, EuiOverlayMask } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n/react';
-import { useCore, sendRequest } from '../../../hooks';
-import { PostAgentUnenrollResponse } from '../../../types';
+import React, { Fragment, useRef, useState } from 'react';
+import { sendRequest, useCore } from '../../../hooks';
 import { agentRouteService } from '../../../services';
+import { PostAgentUnenrollResponse } from '../../../types';
 
 interface Props {
   children: (unenrollAgents: UnenrollAgents) => React.ReactElement;

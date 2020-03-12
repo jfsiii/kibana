@@ -3,9 +3,9 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { EuiPage, EuiPageBody, EuiSpacer } from '@elastic/eui';
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { EuiPage, EuiPageBody, EuiSpacer } from '@elastic/eui';
 import { Header, HeaderProps } from '../components';
 
 const Page = styled(EuiPage)`

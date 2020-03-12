@@ -5,7 +5,7 @@
  */
 import { SavedObjectsClientContract } from 'kibana/server';
 import { DATASOURCE_SAVED_OBJECT_TYPE } from '../constants';
-import { NewDatasource, Datasource, ListWithKuery } from '../types';
+import { Datasource, ListWithKuery, NewDatasource } from '../types';
 
 const SAVED_OBJECT_TYPE = DATASOURCE_SAVED_OBJECT_TYPE;
 

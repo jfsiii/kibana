@@ -5,10 +5,10 @@
  */
 
 export * from './acks';
-export * from './events';
 export * from './checkin';
-export * from './enroll';
-export * from './unenroll';
-export * from './status';
 export * from './crud';
+export * from './enroll';
+export * from './events';
+export * from './status';
+export * from './unenroll';
 export * from './update';

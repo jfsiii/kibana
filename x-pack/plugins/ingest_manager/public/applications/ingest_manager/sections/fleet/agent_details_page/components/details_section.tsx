@@ -4,30 +4,30 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { useState, Fragment } from 'react';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
-  EuiTitle,
-  EuiSpacer,
+  EuiButton,
+  EuiButtonEmpty,
+  EuiDescriptionList,
+  EuiDescriptionListDescription,
+  EuiDescriptionListTitle,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiDescriptionList,
-  EuiButton,
-  EuiDescriptionListTitle,
-  EuiDescriptionListDescription,
-  EuiButtonEmpty,
   EuiIconTip,
+  EuiSpacer,
   EuiTextColor,
+  EuiTitle,
 } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { Fragment, useState } from 'react';
+import { Loading } from '../../../../components';
+import { useCore, useGetOneAgentConfig } from '../../../../hooks';
+import { Agent } from '../../../../types';
+import { ConnectedLink } from '../../components';
+import { AgentHealth } from '../../components/agent_health';
+import { AgentUnenrollProvider } from '../../components/agent_unenroll_provider';
 import { useAgentRefresh } from '../hooks';
 import { AgentMetadataFlyout } from './metadata_flyout';
-import { Agent } from '../../../../types';
-import { AgentHealth } from '../../components/agent_health';
-import { useCore, useGetOneAgentConfig } from '../../../../hooks';
-import { Loading } from '../../../../components';
-import { ConnectedLink } from '../../components';
-import { AgentUnenrollProvider } from '../../components/agent_unenroll_provider';
 
 const Item: React.FunctionComponent<{ label: string }> = ({ label, children }) => {
   return (

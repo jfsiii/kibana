@@ -3,8 +3,8 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { EuiIcon, EuiIconProps, ICON_TYPES } from '@elastic/eui';
 import React from 'react';
-import { ICON_TYPES, EuiIcon, EuiIconProps } from '@elastic/eui';
 import { PackageInfo, PackageListItem } from '../../../types';
 import { useLinks } from '../hooks';
 

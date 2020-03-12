@@ -3,14 +3,14 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState } from 'react';
+import { EuiButtonGroup, EuiSpacer, EuiSteps, EuiText } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
-import { EuiSpacer, EuiText, EuiButtonGroup, EuiSteps } from '@elastic/eui';
 import { FormattedMessage } from '@kbn/i18n/react';
-import { useEnrollmentApiKey } from '../enrollment_api_keys';
-import { ShellEnrollmentInstructions, ManualInstructions } from '../enrollment_instructions';
+import React, { useState } from 'react';
 import { useCore, useGetAgents } from '../../../../../hooks';
 import { Loading } from '../../../components';
+import { useEnrollmentApiKey } from '../enrollment_api_keys';
+import { ManualInstructions, ShellEnrollmentInstructions } from '../enrollment_instructions';
 
 interface Props {
   selectedAPIKeyId: string | null;

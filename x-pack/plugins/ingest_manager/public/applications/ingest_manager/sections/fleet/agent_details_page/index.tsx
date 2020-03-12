@@ -3,16 +3,16 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import { FormattedMessage } from '@kbn/i18n/react';
 import { EuiCallOut, EuiText } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
-import { AgentEventsTable, AgentDetailSection } from './components';
-import { AgentRefreshContext } from './hooks';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { Loading } from '../../../components';
 import { useGetOneAgent } from '../../../hooks';
 import { WithHeaderLayout } from '../../../layouts';
+import { AgentDetailSection, AgentEventsTable } from './components';
+import { AgentRefreshContext } from './hooks';
 
 export const AgentDetailsPage: React.FunctionComponent = () => {
   const {

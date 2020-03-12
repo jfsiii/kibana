@@ -4,17 +4,17 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { IRouter } from 'kibana/server';
-import { PLUGIN_ID, ENROLLMENT_API_KEY_ROUTES } from '../../constants';
+import { ENROLLMENT_API_KEY_ROUTES, PLUGIN_ID } from '../../constants';
 import {
+  DeleteEnrollmentAPIKeyRequestSchema,
   GetEnrollmentAPIKeysRequestSchema,
   GetOneEnrollmentAPIKeyRequestSchema,
-  DeleteEnrollmentAPIKeyRequestSchema,
   PostEnrollmentAPIKeyRequestSchema,
 } from '../../types';
 import {
+  deleteEnrollmentApiKeyHandler,
   getEnrollmentApiKeysHandler,
   getOneEnrollmentApiKeyHandler,
-  deleteEnrollmentApiKeyHandler,
   postEnrollmentApiKeyHandler,
 } from './handler';
 

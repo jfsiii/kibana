@@ -3,13 +3,13 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiPage, EuiTitle, IconType } from '@elastic/eui';
+import { FormattedMessage } from '@kbn/i18n/react';
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { FormattedMessage } from '@kbn/i18n/react';
-import { EuiFlexGroup, EuiFlexItem, EuiPage, EuiTitle, IconType, EuiButton } from '@elastic/eui';
-import { PackageInfo } from '../../../../types';
 import { EPM_PATH } from '../../../../constants';
 import { useCore, useLink } from '../../../../hooks';
+import { PackageInfo } from '../../../../types';
 import { IconPanel } from '../../components/icon_panel';
 import { NavButtonBack } from '../../components/nav_button_back';
 import { Version } from '../../components/version';

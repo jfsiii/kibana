@@ -4,13 +4,13 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import {
+  AGENT_API_ROUTES,
+  AGENT_CONFIG_API_ROUTES,
+  DATASOURCE_API_ROUTES,
+  ENROLLMENT_API_KEY_ROUTES,
   EPM_API_ROOT,
   EPM_API_ROUTES,
-  DATASOURCE_API_ROUTES,
-  AGENT_CONFIG_API_ROUTES,
   FLEET_SETUP_API_ROUTES,
-  AGENT_API_ROUTES,
-  ENROLLMENT_API_KEY_ROUTES,
   SETUP_API_ROUTE,
 } from '../constants';
 

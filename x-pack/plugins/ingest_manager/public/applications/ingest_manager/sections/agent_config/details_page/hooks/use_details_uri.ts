@@ -6,8 +6,8 @@
 
 import { useMemo } from 'react';
 import { generatePath } from 'react-router-dom';
-import { useLink } from '../../../../hooks';
 import { AGENT_CONFIG_PATH } from '../../../../constants';
+import { useLink } from '../../../../hooks';
 import { DETAILS_ROUTER_PATH, DETAILS_ROUTER_SUB_PATH } from '../constants';
 
 export const useDetailsUri = (configId: string) => {

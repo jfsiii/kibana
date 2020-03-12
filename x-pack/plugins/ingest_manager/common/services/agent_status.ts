@@ -5,9 +5,9 @@
  */
 
 import {
-  AGENT_TYPE_TEMPORARY,
   AGENT_POLLING_THRESHOLD_MS,
   AGENT_TYPE_PERMANENT,
+  AGENT_TYPE_TEMPORARY,
 } from '../constants';
 
 export function buildKueryForOnlineAgents() {

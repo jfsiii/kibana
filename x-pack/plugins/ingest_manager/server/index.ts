@@ -40,10 +40,10 @@ export const plugin = (initializerContext: PluginInitializerContext) => {
 
 // Saved object information bootstrapped by legacy `ingest_manager` plugin
 // TODO: Remove once saved object mappings can be done from NP
-export { savedObjectMappings } from './saved_objects';
 export {
-  OUTPUT_SAVED_OBJECT_TYPE,
   AGENT_CONFIG_SAVED_OBJECT_TYPE,
   DATASOURCE_SAVED_OBJECT_TYPE,
+  OUTPUT_SAVED_OBJECT_TYPE,
   PACKAGES_SAVED_OBJECT_TYPE,
 } from './constants';
+export { savedObjectMappings } from './saved_objects';

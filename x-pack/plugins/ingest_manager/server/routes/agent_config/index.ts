@@ -4,22 +4,22 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { IRouter } from 'kibana/server';
-import { PLUGIN_ID, AGENT_CONFIG_API_ROUTES } from '../../constants';
+import { AGENT_CONFIG_API_ROUTES, PLUGIN_ID } from '../../constants';
 import {
-  GetAgentConfigsRequestSchema,
-  GetOneAgentConfigRequestSchema,
   CreateAgentConfigRequestSchema,
-  UpdateAgentConfigRequestSchema,
   DeleteAgentConfigsRequestSchema,
+  GetAgentConfigsRequestSchema,
   GetFullAgentConfigRequestSchema,
+  GetOneAgentConfigRequestSchema,
+  UpdateAgentConfigRequestSchema,
 } from '../../types';
 import {
-  getAgentConfigsHandler,
-  getOneAgentConfigHandler,
   createAgentConfigHandler,
-  updateAgentConfigHandler,
   deleteAgentConfigsHandler,
+  getAgentConfigsHandler,
   getFullAgentConfig,
+  getOneAgentConfigHandler,
+  updateAgentConfigHandler,
 } from './handlers';
 
 export const registerRoutes = (router: IRouter) => {

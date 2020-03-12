@@ -3,18 +3,18 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React from 'react';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
+  EuiButtonEmpty,
+  EuiDescriptionList,
+  EuiDescriptionListDescription,
+  EuiDescriptionListTitle,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiText,
-  EuiDescriptionList,
-  EuiDescriptionListTitle,
-  EuiDescriptionListDescription,
-  EuiButtonEmpty,
   EuiSpacer,
+  EuiText,
 } from '@elastic/eui';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React from 'react';
 import { WithHeaderLayout } from '../../../../layouts';
 import { AgentConfig, PackageInfo } from '../../../../types';
 import { PackageIcon } from '../../../epm/components';

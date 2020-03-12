@@ -4,10 +4,10 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import React from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import { AgentConfigListPage } from './list_page';
-import { AgentConfigDetailsPage } from './details_page';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { CreateDatasourcePage } from './create_datasource_page';
+import { AgentConfigDetailsPage } from './details_page';
+import { AgentConfigListPage } from './list_page';
 
 export const AgentConfigApp: React.FunctionComponent = () => (
   <Router>

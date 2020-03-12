@@ -3,11 +3,11 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-export * from './common';
-export * from './datasource';
 export * from './agent';
 export * from './agent_config';
-export * from './fleet_setup';
-export * from './epm';
+export * from './common';
+export * from './datasource';
 export * from './enrollment_api_key';
+export * from './epm';
+export * from './fleet_setup';
 export * from './install_script';

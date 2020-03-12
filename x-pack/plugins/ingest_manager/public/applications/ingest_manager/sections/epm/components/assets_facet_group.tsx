@@ -19,8 +19,8 @@ import styled from 'styled-components';
 import {
   AssetsGroupedByServiceByType,
   AssetTypeToParts,
-  KibanaAssetType,
   entries,
+  KibanaAssetType,
 } from '../../../types';
 import {
   AssetIcons,

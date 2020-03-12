@@ -4,26 +4,26 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { TypeOf } from '@kbn/config-schema';
-import { RequestHandler } from 'kibana/server';
 import bluebird from 'bluebird';
-import { appContextService, agentConfigService } from '../../services';
+import { RequestHandler } from 'kibana/server';
+import {
+  CreateAgentConfigResponse,
+  DeleteAgentConfigsResponse,
+  GetAgentConfigsResponse,
+  GetFullAgentConfigResponse,
+  GetOneAgentConfigResponse,
+  UpdateAgentConfigResponse,
+} from '../../../common';
+import { agentConfigService, appContextService } from '../../services';
 import { listAgents } from '../../services/agents';
 import {
-  GetAgentConfigsRequestSchema,
-  GetOneAgentConfigRequestSchema,
   CreateAgentConfigRequestSchema,
-  UpdateAgentConfigRequestSchema,
   DeleteAgentConfigsRequestSchema,
+  GetAgentConfigsRequestSchema,
   GetFullAgentConfigRequestSchema,
+  GetOneAgentConfigRequestSchema,
+  UpdateAgentConfigRequestSchema,
 } from '../../types';
-import {
-  GetAgentConfigsResponse,
-  GetOneAgentConfigResponse,
-  CreateAgentConfigResponse,
-  UpdateAgentConfigResponse,
-  DeleteAgentConfigsResponse,
-  GetFullAgentConfigResponse,
-} from '../../../common';
 
 export const getAgentConfigsHandler: RequestHandler<
   undefined,

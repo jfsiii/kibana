@@ -6,16 +6,16 @@
 
 import {
   AssetReference,
+  CallESAsCurrentUser,
   Dataset,
-  RegistryPackage,
-  IngestAssetType,
   ElasticsearchAssetType,
+  IngestAssetType,
+  RegistryPackage,
 } from '../../../../types';
-import { CallESAsCurrentUser } from '../../../../types';
 import { Field, loadFieldsFromYaml } from '../../fields/field';
+import * as Registry from '../../registry';
 import { getPipelineNameForInstallation } from '../ingest_pipeline/install';
 import { generateMappings, generateTemplateName, getTemplate } from './template';
-import * as Registry from '../../registry';
 
 export const installTemplates = async (
   registryPackage: RegistryPackage,

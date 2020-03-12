@@ -4,12 +4,12 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-export { useCore, CoreContext } from './use_core';
-export { useConfig, ConfigContext } from './use_config';
-export { useSetupDeps, useStartDeps, DepsContext } from './use_deps';
-export { useLink } from './use_link';
-export { usePagination, Pagination } from './use_pagination';
+export { ConfigContext, useConfig } from './use_config';
+export { CoreContext, useCore } from './use_core';
 export { useDebounce } from './use_debounce';
-export * from './use_request';
+export { DepsContext, useSetupDeps, useStartDeps } from './use_deps';
 export * from './use_input';
+export { useLink } from './use_link';
+export { Pagination, usePagination } from './use_pagination';
+export * from './use_request';
 export * from './use_url_params';

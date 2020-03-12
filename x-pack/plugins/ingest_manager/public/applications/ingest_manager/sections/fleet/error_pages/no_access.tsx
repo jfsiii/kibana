@@ -3,9 +3,8 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React from 'react';
 import { FormattedMessage, injectI18n } from '@kbn/i18n/react';
-
+import React from 'react';
 import { NoDataLayout } from './components/no_data_layout';
 
 export const NoAccessPage = injectI18n(({ intl }) => (

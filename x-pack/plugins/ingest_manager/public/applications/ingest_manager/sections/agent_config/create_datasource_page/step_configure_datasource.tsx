@@ -3,32 +3,32 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useEffect, useState, Fragment } from 'react';
-import { i18n } from '@kbn/i18n';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
-  EuiSteps,
-  EuiPanel,
+  EuiButton,
+  EuiButtonEmpty,
+  EuiComboBox,
+  EuiEmptyPrompt,
+  EuiFieldText,
   EuiFlexGrid,
   EuiFlexGroup,
   EuiFlexItem,
   EuiFormRow,
-  EuiFieldText,
-  EuiButtonEmpty,
+  EuiPanel,
   EuiSpacer,
-  EuiEmptyPrompt,
+  EuiSteps,
   EuiText,
-  EuiButton,
-  EuiComboBox,
 } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { packageToConfigDatasourceInputs } from '../../../services';
 import {
   AgentConfig,
-  PackageInfo,
   Datasource,
-  NewDatasource,
   DatasourceInput,
+  NewDatasource,
+  PackageInfo,
 } from '../../../types';
-import { packageToConfigDatasourceInputs } from '../../../services';
 import { DatasourceInputPanel } from './components';
 
 export const StepConfigureDatasource: React.FunctionComponent<{

@@ -3,47 +3,46 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { CSSProperties, useCallback, useEffect, useMemo, useState } from 'react';
 import {
-  EuiSpacer,
-  EuiText,
+  EuiBasicTable,
+  EuiButton,
+  EuiButtonIcon,
+  EuiContextMenuItem,
+  EuiContextMenuPanel,
+  EuiEmptyPrompt,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiButton,
-  EuiEmptyPrompt,
-  EuiBasicTable,
   EuiLink,
+  EuiPopover,
+  EuiSpacer,
   EuiTableActionsColumnType,
   EuiTableFieldDataColumnType,
+  EuiText,
   EuiTextColor,
-  EuiPopover,
-  EuiContextMenuPanel,
-  EuiContextMenuItem,
-  EuiButtonIcon,
 } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
-import { FormattedMessage, FormattedDate } from '@kbn/i18n/react';
-import styled from 'styled-components';
+import { FormattedDate, FormattedMessage } from '@kbn/i18n/react';
+import React, { CSSProperties, useCallback, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AgentConfig } from '../../../types';
+import styled from 'styled-components';
+import { SearchBar } from '../../../components/search_bar';
 import {
   AGENT_CONFIG_DETAILS_PATH,
-  AGENT_CONFIG_SAVED_OBJECT_TYPE,
   AGENT_CONFIG_PATH,
+  AGENT_CONFIG_SAVED_OBJECT_TYPE,
 } from '../../../constants';
-import { WithHeaderLayout } from '../../../layouts';
 import {
+  useConfig,
   useCore,
   useGetAgentConfigs,
-  usePagination,
   useLink,
-  useConfig,
+  usePagination,
   useUrlParams,
 } from '../../../hooks';
-import { AgentConfigDeleteProvider } from '../components';
+import { WithHeaderLayout } from '../../../layouts';
+import { AgentConfig } from '../../../types';
+import { AgentConfigDeleteProvider, LinkedAgentCount } from '../components';
 import { CreateAgentConfigFlyout } from './components';
-import { SearchBar } from '../../../components/search_bar';
-import { LinkedAgentCount } from '../components';
 
 const NO_WRAP_TRUNCATE_STYLE: CSSProperties = Object.freeze({
   overflow: 'hidden',

@@ -4,29 +4,29 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import { TypeOf } from '@kbn/config-schema';
-import { RequestHandler, CustomHttpResponseOptions } from 'kibana/server';
+import { CustomHttpResponseOptions, RequestHandler } from 'kibana/server';
 import {
-  GetPackagesRequestSchema,
-  GetFileRequestSchema,
-  GetInfoRequestSchema,
-  InstallPackageRequestSchema,
-  DeletePackageRequestSchema,
-} from '../../types';
-import {
-  GetInfoResponse,
-  InstallPackageResponse,
   DeletePackageResponse,
   GetCategoriesResponse,
+  GetInfoResponse,
   GetPackagesResponse,
+  InstallPackageResponse,
 } from '../../../common';
 import {
   getCategories,
-  getPackages,
   getFile,
   getPackageInfo,
+  getPackages,
   installPackage,
   removeInstallation,
 } from '../../services/epm/packages';
+import {
+  DeletePackageRequestSchema,
+  GetFileRequestSchema,
+  GetInfoRequestSchema,
+  GetPackagesRequestSchema,
+  InstallPackageRequestSchema,
+} from '../../types';
 
 export const getCategoriesHandler: RequestHandler = async (context, request, response) => {
   try {

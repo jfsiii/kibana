@@ -4,9 +4,9 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { SavedObjectsClientContract, SavedObject, KibanaRequest } from 'kibana/server';
+import { KibanaRequest, SavedObject, SavedObjectsClientContract } from 'kibana/server';
 import { ENROLLMENT_API_KEYS_SAVED_OBJECT_TYPE } from '../../constants';
-import { EnrollmentAPIKeySOAttributes, EnrollmentAPIKey } from '../../types';
+import { EnrollmentAPIKey, EnrollmentAPIKeySOAttributes } from '../../types';
 import { createAPIKey } from './security';
 
 export * from './enrollment_api_key';

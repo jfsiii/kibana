@@ -4,23 +4,23 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React, { useMemo, useState } from 'react';
 import {
   EuiAccordion,
+  EuiComboBox,
   EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
   EuiForm,
   EuiFormRow,
   EuiHorizontalRule,
+  EuiIconTip,
   EuiSpacer,
   EuiSwitch,
   EuiText,
-  EuiComboBox,
-  EuiIconTip,
 } from '@elastic/eui';
-import { FormattedMessage } from '@kbn/i18n/react';
 import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { NewAgentConfig } from '../../../types';
 

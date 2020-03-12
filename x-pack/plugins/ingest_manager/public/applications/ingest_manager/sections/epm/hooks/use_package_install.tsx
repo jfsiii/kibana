@@ -9,9 +9,8 @@ import React, { useCallback, useState } from 'react';
 import { NotificationsStart } from 'src/core/public';
 import { useLinks } from '.';
 import { toMountPoint } from '../../../../../../../../../src/plugins/kibana_react/public';
-import { PackageInfo } from '../../../types';
 import { sendInstallPackage, sendRemovePackage } from '../../../hooks';
-import { InstallStatus } from '../../../types';
+import { InstallStatus, PackageInfo } from '../../../types';
 
 interface PackagesInstall {
   [key: string]: PackageInstallItem;

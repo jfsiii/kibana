@@ -4,19 +4,19 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import React from 'react';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
-  EuiTitle,
-  EuiSpacer,
   EuiDescriptionList,
   EuiFlyout,
-  EuiFlyoutHeader,
   EuiFlyoutBody,
+  EuiFlyoutHeader,
   EuiHorizontalRule,
+  EuiSpacer,
+  EuiTitle,
 } from '@elastic/eui';
-import { MetadataForm } from './metadata_form';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React from 'react';
 import { Agent } from '../../../../types';
+import { MetadataForm } from './metadata_form';
 
 interface Props {
   agent: Agent;

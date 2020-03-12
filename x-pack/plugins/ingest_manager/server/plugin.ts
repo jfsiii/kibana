@@ -3,8 +3,6 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
 import {
   CoreSetup,
   CoreStart,
@@ -12,32 +10,32 @@ import {
   PluginInitializerContext,
   SavedObjectsServiceStart,
 } from 'kibana/server';
-import { LicensingPluginSetup } from '../../licensing/server';
+import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { EncryptedSavedObjectsPluginStart } from '../../encrypted_saved_objects/server';
-import { SecurityPluginSetup } from '../../security/server';
 import { PluginSetupContract as FeaturesPluginSetup } from '../../features/server';
-import {
-  PLUGIN_ID,
-  OUTPUT_SAVED_OBJECT_TYPE,
-  AGENT_CONFIG_SAVED_OBJECT_TYPE,
-  DATASOURCE_SAVED_OBJECT_TYPE,
-  PACKAGES_SAVED_OBJECT_TYPE,
-  AGENT_SAVED_OBJECT_TYPE,
-  AGENT_EVENT_SAVED_OBJECT_TYPE,
-  ENROLLMENT_API_KEYS_SAVED_OBJECT_TYPE,
-} from './constants';
-
-import {
-  registerEPMRoutes,
-  registerDatasourceRoutes,
-  registerAgentConfigRoutes,
-  registerSetupRoutes,
-  registerAgentRoutes,
-  registerEnrollmentApiKeyRoutes,
-  registerInstallScriptRoutes,
-} from './routes';
-
+import { LicensingPluginSetup } from '../../licensing/server';
+import { SecurityPluginSetup } from '../../security/server';
 import { IngestManagerConfigType } from '../common';
+import {
+  AGENT_CONFIG_SAVED_OBJECT_TYPE,
+  AGENT_EVENT_SAVED_OBJECT_TYPE,
+  AGENT_SAVED_OBJECT_TYPE,
+  DATASOURCE_SAVED_OBJECT_TYPE,
+  ENROLLMENT_API_KEYS_SAVED_OBJECT_TYPE,
+  OUTPUT_SAVED_OBJECT_TYPE,
+  PACKAGES_SAVED_OBJECT_TYPE,
+  PLUGIN_ID,
+} from './constants';
+import {
+  registerAgentConfigRoutes,
+  registerAgentRoutes,
+  registerDatasourceRoutes,
+  registerEnrollmentApiKeyRoutes,
+  registerEPMRoutes,
+  registerInstallScriptRoutes,
+  registerSetupRoutes,
+} from './routes';
 import { appContextService } from './services';
 
 export interface IngestManagerSetupDeps {

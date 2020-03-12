@@ -3,17 +3,17 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState, Fragment } from 'react';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
+  EuiButtonEmpty,
   EuiFlexGrid,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiText,
   EuiSpacer,
-  EuiButtonEmpty,
+  EuiText,
   EuiTitle,
 } from '@elastic/eui';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { Fragment, useState } from 'react';
 import { DatasourceInput, RegistryVarsEntry } from '../../../../types';
 import { DatasourceInputVarField } from './datasource_input_var_field';
 

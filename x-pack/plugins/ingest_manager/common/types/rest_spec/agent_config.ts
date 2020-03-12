@@ -3,7 +3,7 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import { AgentConfig, NewAgentConfig, FullAgentConfig } from '../models';
+import { AgentConfig, FullAgentConfig, NewAgentConfig } from '../models';
 import { ListWithKuery } from './common';
 
 export interface GetAgentConfigsRequest {

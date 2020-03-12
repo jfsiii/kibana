@@ -3,26 +3,26 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { EuiErrorBoundary } from '@elastic/eui';
+import { FormattedMessage } from '@kbn/i18n/react';
+import { AppMountParameters, CoreStart } from 'kibana/public';
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter as Router, Redirect, Route, RouteProps, Switch } from 'react-router-dom';
 import { useObservable } from 'react-use';
-import { HashRouter as Router, Redirect, Switch, Route, RouteProps } from 'react-router-dom';
-import { FormattedMessage } from '@kbn/i18n/react';
-import { EuiErrorBoundary } from '@elastic/eui';
-import { CoreStart, AppMountParameters } from 'kibana/public';
 import { EuiThemeProvider } from '../../../../../legacy/common/eui_styled_components';
 import {
-  IngestManagerSetupDeps,
   IngestManagerConfigType,
+  IngestManagerSetupDeps,
   IngestManagerStartDeps,
 } from '../../plugin';
-import { EPM_PATH, FLEET_PATH, AGENT_CONFIG_PATH } from './constants';
-import { DefaultLayout, WithoutHeaderLayout } from './layouts';
-import { Loading, Error } from './components';
-import { IngestManagerOverview, EPMApp, AgentConfigApp, FleetApp } from './sections';
-import { CoreContext, DepsContext, ConfigContext, setHttpClient, useConfig } from './hooks';
-import { PackageInstallProvider } from './sections/epm/hooks';
+import { Error, Loading } from './components';
+import { AGENT_CONFIG_PATH, EPM_PATH, FLEET_PATH } from './constants';
+import { ConfigContext, CoreContext, DepsContext, setHttpClient, useConfig } from './hooks';
 import { sendSetup } from './hooks/use_request/setup';
+import { DefaultLayout, WithoutHeaderLayout } from './layouts';
+import { AgentConfigApp, EPMApp, FleetApp, IngestManagerOverview } from './sections';
+import { PackageInstallProvider } from './sections/epm/hooks';
 
 export interface ProtectedRouteProps extends RouteProps {
   isAllowed?: boolean;

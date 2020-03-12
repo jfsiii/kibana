@@ -3,28 +3,28 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
+import { EuiButtonEmpty } from '@elastic/eui';
+import { FormattedMessage } from '@kbn/i18n/react';
 import React, { useState } from 'react';
 import {
-  useRouteMatch,
   HashRouter as Router,
-  Switch,
-  Route,
   Redirect,
+  Route,
+  Switch,
   useHistory,
+  useRouteMatch,
 } from 'react-router-dom';
-import { FormattedMessage } from '@kbn/i18n/react';
-import { EuiButtonEmpty } from '@elastic/eui';
 import { AGENT_CONFIG_DETAILS_PATH } from '../../../constants';
-import { AgentConfig, PackageInfo, NewDatasource } from '../../../types';
-import { useLink, sendCreateDatasource } from '../../../hooks';
+import { sendCreateDatasource, useLink } from '../../../hooks';
+import { AgentConfig, NewDatasource, PackageInfo } from '../../../types';
 import { useLinks as useEPMLinks } from '../../epm/hooks';
 import { CreateDatasourcePageLayout } from './components';
-import { CreateDatasourceFrom, CreateDatasourceStep } from './types';
 import { CREATE_DATASOURCE_STEP_PATHS } from './constants';
-import { StepSelectPackage } from './step_select_package';
-import { StepSelectConfig } from './step_select_config';
 import { StepConfigureDatasource } from './step_configure_datasource';
 import { StepReviewDatasource } from './step_review';
+import { StepSelectConfig } from './step_select_config';
+import { StepSelectPackage } from './step_select_package';
+import { CreateDatasourceFrom, CreateDatasourceStep } from './types';
 
 export const CreateDatasourcePage: React.FunctionComponent = () => {
   const {

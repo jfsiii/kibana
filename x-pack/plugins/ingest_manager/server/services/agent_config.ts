@@ -5,19 +5,19 @@
  */
 import { SavedObjectsClientContract } from 'kibana/server';
 import { AuthenticatedUser } from '../../../security/server';
-import { DEFAULT_AGENT_CONFIG, AGENT_CONFIG_SAVED_OBJECT_TYPE } from '../constants';
-import {
-  Datasource,
-  NewAgentConfig,
-  AgentConfig,
-  FullAgentConfig,
-  AgentConfigStatus,
-  ListWithKuery,
-} from '../types';
 import { DeleteAgentConfigsResponse, storedDatasourceToAgentDatasource } from '../../common';
+import { AGENT_CONFIG_SAVED_OBJECT_TYPE, DEFAULT_AGENT_CONFIG } from '../constants';
+import {
+  AgentConfig,
+  AgentConfigStatus,
+  Datasource,
+  FullAgentConfig,
+  ListWithKuery,
+  NewAgentConfig,
+} from '../types';
+import { agentConfigUpdateEventHandler } from './agent_config_update';
 import { datasourceService } from './datasource';
 import { outputService } from './output';
-import { agentConfigUpdateEventHandler } from './agent_config_update';
 
 const SAVED_OBJECT_TYPE = AGENT_CONFIG_SAVED_OBJECT_TYPE;
 

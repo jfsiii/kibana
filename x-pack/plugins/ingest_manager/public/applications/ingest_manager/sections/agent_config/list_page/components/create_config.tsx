@@ -3,23 +3,23 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useState } from 'react';
-import { i18n } from '@kbn/i18n';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
-  EuiFlyout,
-  EuiFlyoutHeader,
-  EuiTitle,
-  EuiFlyoutBody,
-  EuiFlyoutFooter,
+  EuiButton,
+  EuiButtonEmpty,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiButtonEmpty,
-  EuiButton,
+  EuiFlyout,
+  EuiFlyoutBody,
+  EuiFlyoutFooter,
+  EuiFlyoutHeader,
   EuiText,
+  EuiTitle,
 } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { useState } from 'react';
+import { sendCreateAgentConfig, useCore } from '../../../../hooks';
 import { NewAgentConfig } from '../../../../types';
-import { useCore, sendCreateAgentConfig } from '../../../../hooks';
 import { AgentConfigForm, agentConfigFormValidation } from '../../components';
 
 interface Props {

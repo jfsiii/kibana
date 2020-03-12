@@ -6,10 +6,10 @@
 import { EuiLoadingContent, EuiText } from '@elastic/eui';
 import React, { Fragment, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { sendGetFileByPath } from '../../../../hooks';
 import { useLinks } from '../../hooks';
 import { ContentCollapse } from './content_collapse';
 import { markdownRenderers } from './markdown_renderers';
-import { sendGetFileByPath } from '../../../../hooks';
 
 export function Readme({
   readmePath,

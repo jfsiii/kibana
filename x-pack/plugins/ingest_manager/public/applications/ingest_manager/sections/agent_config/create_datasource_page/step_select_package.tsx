@@ -3,21 +3,21 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useEffect, useState, Fragment } from 'react';
-import { i18n } from '@kbn/i18n';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
-  EuiButtonEmpty,
   EuiButton,
+  EuiButtonEmpty,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiTitle,
   EuiSelectable,
   EuiSpacer,
+  EuiTitle,
 } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Error } from '../../../components';
+import { sendGetPackageInfoByKey, useGetOneAgentConfig, useGetPackages } from '../../../hooks';
 import { AgentConfig, PackageInfo } from '../../../types';
-import { useGetOneAgentConfig, useGetPackages, sendGetPackageInfoByKey } from '../../../hooks';
 import { PackageIcon } from '../../epm/components';
 
 export const StepSelectPackage: React.FunctionComponent<{

@@ -3,36 +3,36 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { Fragment, memo, useCallback, useMemo, useState } from 'react';
-import { Redirect, useRouteMatch, Switch, Route } from 'react-router-dom';
-import { i18n } from '@kbn/i18n';
-import { FormattedMessage, FormattedDate } from '@kbn/i18n/react';
 import {
-  EuiFlexGroup,
-  EuiFlexItem,
-  EuiCallOut,
-  EuiText,
-  EuiSpacer,
-  EuiTitle,
   EuiButton,
   EuiButtonEmpty,
-  EuiEmptyPrompt,
-  EuiI18nNumber,
+  EuiCallOut,
   EuiDescriptionList,
-  EuiDescriptionListTitle,
   EuiDescriptionListDescription,
+  EuiDescriptionListTitle,
+  EuiEmptyPrompt,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiI18nNumber,
+  EuiSpacer,
+  EuiText,
+  EuiTitle,
 } from '@elastic/eui';
 import { Props as EuiTabProps } from '@elastic/eui/src/components/tabs/tab';
+import { i18n } from '@kbn/i18n';
+import { FormattedDate, FormattedMessage } from '@kbn/i18n/react';
+import React, { Fragment, memo, useCallback, useMemo, useState } from 'react';
+import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
-import { useCore, useGetOneAgentConfig } from '../../../hooks';
-import { Datasource } from '../../../types';
 import { Loading } from '../../../components';
+import { useCore, useGetOneAgentConfig } from '../../../hooks';
 import { WithHeaderLayout } from '../../../layouts';
-import { ConfigRefreshContext, useGetAgentStatus, AgentStatusRefreshContext } from './hooks';
-import { DatasourcesTable, EditConfigFlyout } from './components';
+import { Datasource } from '../../../types';
 import { LinkedAgentCount } from '../components';
-import { useDetailsUri } from './hooks/use_details_uri';
+import { DatasourcesTable, EditConfigFlyout } from './components';
 import { DETAILS_ROUTER_PATH, DETAILS_ROUTER_SUB_PATH } from './constants';
+import { AgentStatusRefreshContext, ConfigRefreshContext, useGetAgentStatus } from './hooks';
+import { useDetailsUri } from './hooks/use_details_uri';
 
 const Divider = styled.div`
   width: 0;

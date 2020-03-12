@@ -8,18 +8,18 @@ import { SavedObject, SavedObjectsClientContract } from 'src/core/server/';
 import { PACKAGES_SAVED_OBJECT_TYPE } from '../../../constants';
 import {
   AssetReference,
-  Installation,
-  KibanaAssetType,
   CallESAsCurrentUser,
   DefaultPackages,
+  Installation,
+  KibanaAssetType,
 } from '../../../types';
+import { installILMPolicy } from '../elasticsearch/ilm/install';
+import { installPipelines } from '../elasticsearch/ingest_pipeline/install';
+import { installTemplates } from '../elasticsearch/template/install';
 import { installIndexPatterns } from '../kibana/index_pattern/install';
 import * as Registry from '../registry';
 import { getObject } from './get_objects';
-import { getInstallation, findInstalledPackageByName } from './index';
-import { installTemplates } from '../elasticsearch/template/install';
-import { installPipelines } from '../elasticsearch/ingest_pipeline/install';
-import { installILMPolicy } from '../elasticsearch/ilm/install';
+import { findInstalledPackageByName, getInstallation } from './index';
 
 export async function installLatestPackage(options: {
   savedObjectsClient: SavedObjectsClientContract;

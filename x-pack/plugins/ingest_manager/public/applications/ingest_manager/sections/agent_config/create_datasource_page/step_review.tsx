@@ -3,26 +3,26 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { Fragment, useState, useEffect } from 'react';
-import { i18n } from '@kbn/i18n';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
+  EuiButton,
+  EuiButtonEmpty,
+  EuiCallOut,
+  EuiCheckbox,
+  EuiCodeBlock,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiButtonEmpty,
-  EuiButton,
-  EuiTitle,
-  EuiCallOut,
-  EuiText,
-  EuiCheckbox,
-  EuiTabbedContent,
-  EuiCodeBlock,
   EuiSpacer,
+  EuiTabbedContent,
+  EuiText,
+  EuiTitle,
 } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
 import { dump } from 'js-yaml';
-import { NewDatasource, AgentConfig } from '../../../types';
-import { useConfig, sendGetAgentStatus } from '../../../hooks';
+import React, { Fragment, useEffect, useState } from 'react';
+import { sendGetAgentStatus, useConfig } from '../../../hooks';
 import { storedDatasourceToAgentDatasource } from '../../../services';
+import { AgentConfig, NewDatasource } from '../../../types';
 
 export const StepReviewDatasource: React.FunctionComponent<{
   agentConfig: AgentConfig;

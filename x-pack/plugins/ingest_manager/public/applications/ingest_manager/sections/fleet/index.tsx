@@ -4,14 +4,14 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 import React from 'react';
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { Loading } from '../../components';
 import { useConfig, useCore, useRequest } from '../../hooks';
-import { AgentListPage } from './agent_list_page';
-import { SetupPage } from './setup_page';
-import { AgentDetailsPage } from './agent_details_page';
-import { NoAccessPage } from './error_pages/no_access';
 import { fleetSetupRouteService } from '../../services';
+import { AgentDetailsPage } from './agent_details_page';
+import { AgentListPage } from './agent_list_page';
+import { NoAccessPage } from './error_pages/no_access';
+import { SetupPage } from './setup_page';
 
 export const FleetApp: React.FunctionComponent = () => {
   const core = useCore();

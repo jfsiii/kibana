@@ -5,10 +5,10 @@
  */
 import { TypeOf } from '@kbn/config-schema';
 import { RequestHandler } from 'kibana/server';
-import { outputService, agentConfigService } from '../../services';
-import { CreateFleetSetupRequestSchema, CreateFleetSetupResponse } from '../../types';
-import { setup } from '../../services/setup';
+import { agentConfigService, outputService } from '../../services';
 import { generateEnrollmentAPIKey } from '../../services/api_keys';
+import { setup } from '../../services/setup';
+import { CreateFleetSetupRequestSchema, CreateFleetSetupResponse } from '../../types';
 
 export const getFleetSetupHandler: RequestHandler = async (context, request, response) => {
   const soClient = context.core.savedObjects.client;

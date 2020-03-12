@@ -3,24 +3,29 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import React, { useEffect, useState, Fragment } from 'react';
-import { i18n } from '@kbn/i18n';
-import { FormattedMessage } from '@kbn/i18n/react';
 import {
-  EuiButtonEmpty,
   EuiButton,
+  EuiButtonEmpty,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiTitle,
   EuiSelectable,
   EuiSpacer,
   EuiTextColor,
+  EuiTitle,
 } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
+import { FormattedMessage } from '@kbn/i18n/react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Error } from '../../../components';
 import { AGENT_CONFIG_PATH } from '../../../constants';
-import { useCore, useLink } from '../../../hooks';
-import { AgentConfig, PackageInfo, GetAgentConfigsResponseItem } from '../../../types';
-import { useGetPackageInfoByKey, useGetAgentConfigs, sendGetOneAgentConfig } from '../../../hooks';
+import {
+  sendGetOneAgentConfig,
+  useCore,
+  useGetAgentConfigs,
+  useGetPackageInfoByKey,
+  useLink,
+} from '../../../hooks';
+import { AgentConfig, GetAgentConfigsResponseItem, PackageInfo } from '../../../types';
 
 export const StepSelectConfig: React.FunctionComponent<{
   pkgkey: string;

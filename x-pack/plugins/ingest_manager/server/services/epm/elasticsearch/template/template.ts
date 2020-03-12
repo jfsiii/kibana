@@ -4,8 +4,8 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import { Field } from '../../fields/field';
 import { Dataset, IndexTemplate } from '../../../../types';
+import { Field } from '../../fields/field';
 import { getDatasetAssetBaseName } from '../index';
 
 interface Properties {
