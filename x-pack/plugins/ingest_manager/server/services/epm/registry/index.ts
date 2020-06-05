@@ -22,6 +22,7 @@ import { fetchUrl, getResponse, getResponseStream } from './requests';
 import { streamToBuffer } from './streams';
 import { getRegistryUrl } from './registry_url';
 
+export { default as apm } from 'elastic-apm-node';
 export { ArchiveEntry } from './extract';
 
 export interface SearchParams {
