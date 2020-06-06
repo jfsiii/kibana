@@ -44,7 +44,9 @@ export async function enroll(
 
   let agent;
   if (existingAgent) {
-    await soClient.update<AgentSOAttributes>(AGENT_SAVED_OBJECT_TYPE, existingAgent.id, agentData);
+    await soClient.update<AgentSOAttributes>(AGENT_SAVED_OBJECT_TYPE, existingAgent.id, agentData, {
+      refresh: false,
+    });
     agent = {
       ...existingAgent,
       ...agentData,
@@ -54,15 +56,22 @@ export async function enroll(
     } as Agent;
   } else {
     agent = savedObjectToAgent(
-      await soClient.create<AgentSOAttributes>(AGENT_SAVED_OBJECT_TYPE, agentData)
+      await soClient.create<AgentSOAttributes>(AGENT_SAVED_OBJECT_TYPE, agentData, {
+        refresh: false,
+      })
     );
   }
 
   const accessAPIKey = await APIKeyService.generateAccessApiKey(soClient, agent.id, configId);
 
-  await soClient.update<AgentSOAttributes>(AGENT_SAVED_OBJECT_TYPE, agent.id, {
-    access_api_key_id: accessAPIKey.id,
-  });
+  await soClient.update<AgentSOAttributes>(
+    AGENT_SAVED_OBJECT_TYPE,
+    agent.id,
+    {
+      access_api_key_id: accessAPIKey.id,
+    },
+    { refresh: false }
+  );
 
   if (fnSpan) fnSpan.end();
   return { ...agent, access_api_key: accessAPIKey.key };

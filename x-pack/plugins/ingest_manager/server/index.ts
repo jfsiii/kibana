@@ -7,6 +7,8 @@ import { schema, TypeOf } from '@kbn/config-schema';
 import { PluginInitializerContext } from 'src/core/server';
 import { IngestManagerPlugin } from './plugin';
 export { AgentService, ESIndexPatternService } from './services';
+
+export { default as apm } from 'elastic-apm-node';
 export {
   IngestManagerSetupContract,
   IngestManagerSetupDeps,
