@@ -192,22 +192,20 @@ export async function installPackage({
   await updateCurrentWriteIndices(callCluster, installedTemplates);
 
   // if this is an update or retrying an update, delete the previous version's pipelines
-  if (installType === 'update' || installType === 'reupdate') {
+  if (installedPkg && (installType === 'update' || installType === 'reupdate')) {
     await deletePreviousPipelines(
       callCluster,
       savedObjectsClient,
       pkgName,
-      // @ts-ignore installType conditions already check for existence of installedPkg
       installedPkg.attributes.version
     );
   }
   // pipelines from a different version may have installed during a failed update
-  if (installType === 'rollback') {
+  if (installedPkg && installType === 'rollback') {
     await deletePreviousPipelines(
       callCluster,
       savedObjectsClient,
       pkgName,
-      // @ts-ignore installType conditions already check for existence of installedPkg
       installedPkg.attributes.install_version
     );
   }
@@ -340,17 +338,32 @@ export async function ensurePackagesCompletedInstall(
   return installingPackages;
 }
 
-export function getInstallType({
-  pkgVersion,
-  installedPkg,
-}: {
+interface NoPkgArgs {
   pkgVersion: string;
-  installedPkg: SavedObject<Installation> | undefined;
-}): InstallType | undefined {
-  const isInstalledPkg = !!installedPkg;
-  const currentPkgVersion = installedPkg?.attributes.version;
-  const lastStartedInstallVersion = installedPkg?.attributes.install_version;
-  if (!isInstalledPkg) return 'install';
+  installedPkg?: undefined;
+}
+
+interface HasPkgArgs {
+  pkgVersion: string;
+  installedPkg: SavedObject<Installation>;
+}
+
+type OnlyInstall = Extract<InstallType, 'install'>;
+type NotInstall = Exclude<InstallType, 'install'>;
+
+// overloads
+export function getInstallType(args: NoPkgArgs): OnlyInstall;
+export function getInstallType(args: HasPkgArgs): NotInstall;
+export function getInstallType(args: NoPkgArgs | HasPkgArgs): OnlyInstall | NotInstall | undefined;
+
+// implementation
+export function getInstallType(args: NoPkgArgs | HasPkgArgs): OnlyInstall | NotInstall | undefined {
+  const { pkgVersion, installedPkg } = args;
+  if (!installedPkg) return 'install';
+
+  const currentPkgVersion = installedPkg.attributes.version;
+  const lastStartedInstallVersion = installedPkg.attributes.install_version;
+
   if (pkgVersion === currentPkgVersion && pkgVersion !== lastStartedInstallVersion)
     return 'rollback';
   if (pkgVersion === currentPkgVersion) return 'reinstall';
