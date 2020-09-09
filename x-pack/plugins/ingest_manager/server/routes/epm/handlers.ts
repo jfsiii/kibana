@@ -30,11 +30,10 @@ import {
   installPackage,
   removeInstallation,
   getLimitedPackages,
-  getInstallationObject,
+  handleUnknownPackageInstallErrors,
 } from '../../services/epm/packages';
 import { IngestManagerError, defaultIngestErrorHandler } from '../../errors';
 import { splitPkgKey } from '../../services/epm/registry';
-import { getInstallType } from '../../services/epm/packages/install';
 
 export const getCategoriesHandler: RequestHandler<
   undefined,
@@ -138,9 +137,6 @@ export const installPackageHandler: RequestHandler<
   const savedObjectsClient = context.core.savedObjects.client;
   const callCluster = context.core.elasticsearch.legacy.client.callAsCurrentUser;
   const { pkgkey } = request.params;
-  const { pkgName, pkgVersion } = splitPkgKey(pkgkey);
-  const installedPkg = await getInstallationObject({ savedObjectsClient, pkgName });
-  const installType = getInstallType({ pkgVersion, installedPkg });
   try {
     const res = await installPackage({
       savedObjectsClient,
@@ -159,23 +155,9 @@ export const installPackageHandler: RequestHandler<
     if (e instanceof IngestManagerError) {
       return defaultResult;
     }
-
     // if there is an unknown server error, uninstall any package assets or reinstall the previous version if update
     try {
-      if (installType === 'install' || installType === 'reinstall') {
-        logger.error(`uninstalling ${pkgkey} after error installing`);
-        await removeInstallation({ savedObjectsClient, pkgkey, callCluster });
-      }
-      if (installType === 'update') {
-        // @ts-ignore installType conditions already check for existence of installedPkg
-        const prevVersion = `${pkgName}-${installedPkg.attributes.version}`;
-        logger.error(`rolling back to ${prevVersion} after error installing ${pkgkey}`);
-        await installPackage({
-          savedObjectsClient,
-          pkgkey: prevVersion,
-          callCluster,
-        });
-      }
+      handleUnknownPackageInstallErrors({ pkgkey, savedObjectsClient, callCluster });
     } catch (error) {
       logger.error(`failed to uninstall or rollback package after installation error ${error}`);
     }

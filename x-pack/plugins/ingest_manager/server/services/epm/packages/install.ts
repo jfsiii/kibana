@@ -7,6 +7,8 @@
 import { SavedObject, SavedObjectsClientContract } from 'src/core/server';
 import semver from 'semver';
 import { PACKAGES_SAVED_OBJECT_TYPE, MAX_TIME_COMPLETE_INSTALL } from '../../../constants';
+import { appContextService } from '../../../services';
+import { splitPkgKey } from '../../../services/epm/registry';
 import {
   AssetReference,
   Installation,
@@ -20,7 +22,12 @@ import {
 } from '../../../types';
 import { installIndexPatterns } from '../kibana/index_pattern/install';
 import * as Registry from '../registry';
-import { getInstallation, getInstallationObject, isRequiredPackage } from './index';
+import {
+  getInstallation,
+  getInstallationObject,
+  isRequiredPackage,
+  removeInstallation,
+} from './index';
 import { installTemplates } from '../elasticsearch/template/install';
 import { generateESIndexPatterns } from '../elasticsearch/template/template';
 import { installPipelines, deletePreviousPipelines } from '../elasticsearch/ingest_pipeline/';
@@ -373,3 +380,36 @@ export function getInstallType({
   if (pkgVersion !== lastStartedInstallVersion && pkgVersion !== currentPkgVersion) return 'update';
   throw new Error('unknown install type');
 }
+
+export const handleUnknownPackageInstallErrors = async (options: {
+  savedObjectsClient: SavedObjectsClientContract;
+  pkgkey: string;
+  callCluster: CallESAsCurrentUser;
+  installError?: any;
+}): Promise<void> => {
+  const logger = appContextService.getLogger();
+  const { savedObjectsClient, pkgkey, callCluster } = options;
+  const { pkgName, pkgVersion } = splitPkgKey(pkgkey);
+  const installedPkg = await getInstallationObject({ savedObjectsClient, pkgName });
+  const installType = getInstallType({ pkgVersion, installedPkg });
+
+  // if there is an unknown server error, uninstall any package assets or reinstall the previous version if update
+  try {
+    if (installType === 'install' || installType === 'reinstall') {
+      logger.error(`uninstalling ${pkgkey} after error installing`);
+      await removeInstallation({ savedObjectsClient, pkgkey, callCluster });
+    }
+    if (installType === 'update') {
+      // @ts-ignore installType conditions already check for existence of installedPkg
+      const prevVersion = `${pkgName}-${installedPkg.attributes.version}`;
+      logger.error(`rolling back to ${prevVersion} after error installing ${pkgkey}`);
+      await installPackage({
+        savedObjectsClient,
+        pkgkey: prevVersion,
+        callCluster,
+      });
+    }
+  } catch (error) {
+    logger.error(`failed to uninstall or rollback package after installation error ${error}`);
+  }
+};

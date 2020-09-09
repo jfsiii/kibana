@@ -23,7 +23,11 @@ export {
   SearchParams,
 } from './get';
 
-export { installPackage, ensureInstalledPackage } from './install';
+export {
+  installPackage,
+  ensureInstalledPackage,
+  handleUnknownPackageInstallErrors,
+} from './install';
 export { removeInstallation } from './remove';
 
 type RequiredPackage = 'system' | 'endpoint';
