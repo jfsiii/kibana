@@ -61,6 +61,7 @@ export const defaultIngestErrorHandler: IngestErrorHandler = async ({
   response,
 }: IngestErrorHandlerParams): Promise<IKibanaResponse> => {
   const logger = appContextService.getLogger();
+  logger.error(error);
   if (isLegacyESClientError(error)) {
     // there was a problem communicating with ES (e.g. via `callCluster`)
     // only log the message

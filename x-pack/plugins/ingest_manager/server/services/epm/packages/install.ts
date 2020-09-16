@@ -80,9 +80,11 @@ export async function ensureInstalledPackage(options: {
 }): Promise<Installation> {
   const { savedObjectsClient, pkgName, callCluster } = options;
   const installedPackage = await getInstallation({ savedObjectsClient, pkgName });
+  console.log('ensureInstalledPackage', pkgName, installedPackage);
   if (installedPackage) {
     return installedPackage;
   }
+  console.log('ensureInstalledPackage', pkgName, 'installLatestPackage');
   // if the requested packaged was not found to be installed, install
   await installLatestPackage({
     savedObjectsClient,
@@ -105,6 +107,7 @@ export async function installPackage({
   callCluster: CallESAsCurrentUser;
   force?: boolean;
 }): Promise<AssetReference[]> {
+  console.log('installPackage', pkgkey);
   // TODO: change epm API to /packageName/version so we don't need to do this
   const { pkgName, pkgVersion } = Registry.splitPkgKey(pkgkey);
   // TODO: calls to getInstallationObject, Registry.fetchInfo, and Registry.fetchFindLatestPackge
@@ -112,7 +115,7 @@ export async function installPackage({
   const latestPackage = await Registry.fetchFindLatestPackage(pkgName);
   // get the currently installed package
   const installedPkg = await getInstallationObject({ savedObjectsClient, pkgName });
-
+  console.log('installPackage installedPkg', installedPkg);
   const installType = getInstallType({ pkgVersion, installedPkg });
 
   // let the user install if using the force flag or needing to reinstall or install a previous version due to failed update
@@ -131,6 +134,15 @@ export async function installPackage({
   // add the package installation to the saved object.
   // if some installation already exists, just update install info
   if (!installedPkg) {
+    console.log('installPackage', pkgkey, 'createInstallation', {
+      pkgName,
+      pkgVersion,
+      internal,
+      removable,
+      installed_kibana: [],
+      installed_es: [],
+      toSaveESIndexPatterns,
+    });
     await createInstallation({
       savedObjectsClient,
       pkgName,
@@ -142,6 +154,7 @@ export async function installPackage({
       toSaveESIndexPatterns,
     });
   } else {
+    console.log('installPackage', pkgkey, 'update', pkgName, 'saved object');
     await savedObjectsClient.update(PACKAGES_SAVED_OBJECT_TYPE, pkgName, {
       install_version: pkgVersion,
       install_status: 'installing',
@@ -156,11 +169,14 @@ export async function installPackage({
       installedPkg.attributes.installed_kibana
     );
   // save new kibana refs before installing the assets
+  console.log('installPackage', pkgName, 'save new kibana refs before installing the assets');
+  console.log('installPackage', pkgName, 'saveKibanaAssetsRefs');
   const installedKibanaAssetsRefs = await saveKibanaAssetsRefs(
     savedObjectsClient,
     pkgName,
     kibanaAssets
   );
+  console.log('installPackage', pkgName, 'installKibanaAssets');
   const installKibanaAssetsPromise = installKibanaAssets({
     savedObjectsClient,
     pkgName,
@@ -224,11 +240,14 @@ export async function installPackage({
   await Promise.all([installKibanaAssetsPromise, installIndexPatternPromise]);
 
   // update to newly installed version when all assets are successfully installed
-  if (installedPkg) await updateVersion(savedObjectsClient, pkgName, pkgVersion);
+  if (installedPkg)
+    console.log('await updateVersion', pkgName, pkgVersion) ||
+      (await updateVersion(savedObjectsClient, pkgName, pkgVersion));
   await savedObjectsClient.update(PACKAGES_SAVED_OBJECT_TYPE, pkgName, {
     install_version: pkgVersion,
     install_status: 'installed',
   });
+  console.log('leaving installPackage', pkgName, 'installedTransforms', installedTransforms);
   return [
     ...installedKibanaAssetsRefs,
     ...installedPipelines,
@@ -302,8 +321,10 @@ export const saveInstalledEsRefs = async (
   pkgName: string,
   installedAssets: EsAssetReference[]
 ) => {
+  console.log('saveInstalledEsRefs', pkgName, 'given', installedAssets);
   const installedPkg = await getInstallationObject({ savedObjectsClient, pkgName });
   const installedAssetsToSave = installedPkg?.attributes.installed_es.concat(installedAssets);
+  console.log('saveInstalledEsRefs', pkgName, 'set installed_es to', installedAssetsToSave);
   await savedObjectsClient.update(PACKAGES_SAVED_OBJECT_TYPE, pkgName, {
     installed_es: installedAssetsToSave,
   });

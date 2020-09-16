@@ -40,6 +40,7 @@ export async function setupIngestManager(
   soClient: SavedObjectsClientContract,
   callCluster: CallESAsCurrentUser
 ): Promise<SetupStatus> {
+  console.log('setupIngestManager called');
   return awaitIfPending(async () => createSetupSideEffects(soClient, callCluster));
 }
 
@@ -47,6 +48,8 @@ async function createSetupSideEffects(
   soClient: SavedObjectsClientContract,
   callCluster: CallESAsCurrentUser
 ): Promise<SetupStatus> {
+  console.log('createSetupSideEffects called');
+  console.log('createSetupSideEffects call ensureDefault*, etc in parallel. wait for result');
   const [installedPackages, defaultOutput, defaultAgentPolicy] = await Promise.all([
     // packages installed by default
     ensureInstalledDefaultPackages(soClient, callCluster),
@@ -63,7 +66,7 @@ async function createSetupSideEffects(
       return Promise.reject(e);
     }),
   ]);
-
+  console.log('createSetupSideEffects ensureDefault*, etc worked');
   // ensure default packages are added to the default conifg
   const agentPolicyWithPackagePolicies = await agentPolicyService.get(
     soClient,
@@ -81,7 +84,17 @@ async function createSetupSideEffects(
   }
   for (const installedPackage of installedPackages) {
     const packageShouldBeInstalled = DEFAULT_AGENT_POLICIES_PACKAGES.some(
-      (packageName) => installedPackage.name === packageName
+      (packageName) =>
+        console.log(
+          `${installedPackage.name} === ${packageName}?`,
+          installedPackage.name === packageName
+        ) || installedPackage.name === packageName
+    );
+    console.log(
+      'createSetupSideEffects',
+      installedPackage.name,
+      'should be installed?',
+      packageShouldBeInstalled
     );
     if (!packageShouldBeInstalled) {
       continue;
@@ -93,7 +106,9 @@ async function createSetupSideEffects(
       }
     );
 
+    console.log('createSetupSideEffects', installedPackage.name, 'is installed?', isInstalled);
     if (!isInstalled) {
+      console.log('createSetupSideEffects', installedPackage.name, 'addPackageToAgentPolicy');
       await addPackageToAgentPolicy(
         soClient,
         callCluster,
@@ -103,7 +118,7 @@ async function createSetupSideEffects(
       );
     }
   }
-
+  console.log('createSetupSideEffects return { isIntialized: true }');
   return { isIntialized: true };
 }
 

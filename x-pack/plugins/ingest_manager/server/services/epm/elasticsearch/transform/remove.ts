@@ -9,7 +9,9 @@ import { CallESAsCurrentUser, ElasticsearchAssetType, EsAssetReference } from '.
 import { PACKAGES_SAVED_OBJECT_TYPE } from '../../../../../common/constants';
 
 export const stopTransforms = async (transformIds: string[], callCluster: CallESAsCurrentUser) => {
+  console.log('stopTransforms', transformIds);
   for (const transformId of transformIds) {
+    console.log('POST _stop', transformId);
     await callCluster('transport.request', {
       method: 'POST',
       path: `_transform/${transformId}/_stop`,
@@ -23,6 +25,7 @@ export const deleteTransforms = async (
   callCluster: CallESAsCurrentUser,
   transformIds: string[]
 ) => {
+  console.log('deleteTransforms', transformIds);
   await Promise.all(
     transformIds.map(async (transformId) => {
       await stopTransforms([transformId], callCluster);

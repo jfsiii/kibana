@@ -35,6 +35,7 @@ export const installTransformForDataset = async (
   callCluster: CallESAsCurrentUser,
   savedObjectsClient: SavedObjectsClientContract
 ) => {
+  console.log('installTransformForDataset', registryPackage.name);
   const installation = await getInstallation({ savedObjectsClient, pkgName: registryPackage.name });
   let previousInstalledTransformEsAssets: EsAssetReference[] = [];
   if (installation) {
@@ -44,6 +45,12 @@ export const installTransformForDataset = async (
   }
 
   // delete all previous transform
+  console.log(
+    'installTransformForDataset',
+    registryPackage.name,
+    'await deleteTransforms',
+    previousInstalledTransformEsAssets.map((asset) => asset.id)
+  );
   await deleteTransforms(
     callCluster,
     previousInstalledTransformEsAssets.map((asset) => asset.id)
