@@ -3,7 +3,7 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import semver from 'semver';
+import { gt as semverGt } from 'semver';
 import { Logger, SavedObjectsClientContract } from 'src/core/server';
 import LRU from 'lru-cache';
 import { PackagePolicyServiceInterface } from '../../../../../../ingest_manager/server';
@@ -287,7 +287,7 @@ export class ManifestManager {
           };
 
           const newManifestVersion = manifest.getSemanticVersion();
-          if (semver.gt(newManifestVersion, oldManifest.value.manifest_version)) {
+          if (semverGt(newManifestVersion, oldManifest.value.manifest_version)) {
             newPackagePolicy.inputs[0].config.artifact_manifest = {
               value: serializedManifest,
             };

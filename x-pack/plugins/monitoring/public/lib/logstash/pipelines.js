@@ -4,10 +4,10 @@
  * you may not use this file except in compliance with the Elastic License.
  */
 
-import semver from 'semver';
+import { major as semverMajor } from 'semver';
 import { LOGSTASH } from '../../../common/constants';
 
 export function isPipelineMonitoringSupportedInVersion(logstashVersion) {
-  const major = semver.major(logstashVersion);
+  const major = semverMajor(logstashVersion);
   return major >= LOGSTASH.MAJOR_VER_REQD_FOR_PIPELINES;
 }

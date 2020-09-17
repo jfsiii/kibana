@@ -3,7 +3,7 @@
  * or more contributor license agreements. Licensed under the Elastic License;
  * you may not use this file except in compliance with the Elastic License.
  */
-import semver from 'semver';
+import { inc as semverInc } from 'semver';
 import { validate } from '../../../../common/validate';
 import {
   InternalArtifactSchema,
@@ -75,7 +75,7 @@ export class Manifest {
   }
 
   public bumpSemanticVersion() {
-    const newSemanticVersion = semver.inc(this.getSemanticVersion(), 'patch');
+    const newSemanticVersion = semverInc(this.getSemanticVersion(), 'patch');
     if (!semanticVersion.is(newSemanticVersion)) {
       throw new Error(`Invalid semver: ${newSemanticVersion}`);
     }

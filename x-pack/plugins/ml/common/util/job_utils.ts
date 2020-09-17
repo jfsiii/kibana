@@ -9,7 +9,7 @@ import isEqual from 'lodash/isEqual';
 import each from 'lodash/each';
 import pick from 'lodash/pick';
 
-import semver from 'semver';
+import { gte as semverGte } from 'semver';
 import moment, { Duration } from 'moment';
 // @ts-ignore
 import numeral from '@elastic/numeral';
@@ -208,7 +208,7 @@ export function isModelPlotEnabled(
 // created with) is greater than or equal to the supplied version (e.g. '6.1.0').
 export function isJobVersionGte(job: CombinedJob, version: string): boolean {
   const jobVersion = job.job_version ?? '0.0.0';
-  return semver.gte(jobVersion, version);
+  return semverGte(jobVersion, version);
 }
 
 // Takes an ML detector 'function' and returns the corresponding ES aggregation name
