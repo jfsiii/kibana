@@ -49,9 +49,8 @@ export enum DataType {
   metrics = 'metrics',
 }
 
-export enum AgentAssetType {
-  input = 'input',
-}
+export const agentAssetTypes = ['input'] as const;
+export type AgentAssetType = typeof agentAssetTypes[number];
 
 export type RegistryRelease = 'ga' | 'beta' | 'experimental';
 
