@@ -11,6 +11,7 @@ import {
 } from '../../../../constants';
 import * as Registry from '../../registry';
 import { loadFieldsFromYaml, Fields, Field } from '../../fields/field';
+import { ensureCachedArchiveInfo } from '../../archive';
 import { getPackageKeysByStatus } from '../../packages/get';
 import { dataTypes, installationStatuses } from '../../../../../common/constants';
 import { ValueOf } from '../../../../../common/types';
@@ -90,7 +91,7 @@ export async function installIndexPatterns(
   const packagePromises = installedPackages.map((pkg) =>
     // TODO: this hard-codes 'registry' as installSource, so uploaded packages are ignored
     // and their fields will be removed from the generated index patterns after this runs.
-    Registry.ensureCachedArchiveInfo(pkg.pkgName, pkg.pkgVersion, 'registry')
+    ensureCachedArchiveInfo(pkg.pkgName, pkg.pkgVersion, 'registry')
   );
   await Promise.all(packagePromises);
 

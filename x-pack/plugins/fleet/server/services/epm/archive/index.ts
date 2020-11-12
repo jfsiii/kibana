@@ -5,7 +5,13 @@
  */
 
 import { ArchivePackage, AssetParts } from '../../../../common/types';
-import { PackageInvalidArchiveError, PackageUnsupportedMediaTypeError } from '../../../errors';
+import {
+  PackageInvalidArchiveError,
+  PackageUnsupportedMediaTypeError,
+  PackageCacheError,
+} from '../../../errors';
+import { InstallSource } from '../../../types';
+import { getRegistryPackage } from '../registry';
 import {
   cacheGet,
   cacheSet,
@@ -143,4 +149,21 @@ export function getAsset(key: string) {
   if (buffer === undefined) throw new Error(`Cannot find asset ${key}`);
 
   return buffer;
+}
+
+export async function ensureCachedArchiveInfo(
+  name: string,
+  version: string,
+  installSource: InstallSource = 'registry'
+) {
+  const paths = getArchiveFilelist(name, version);
+  if (!paths || paths.length === 0) {
+    if (installSource === 'registry') {
+      await getRegistryPackage(name, version);
+    } else {
+      throw new PackageCacheError(
+        `Package ${name}-${version} not cached. If it was uploaded, try uninstalling and reinstalling manually.`
+      );
+    }
+  }
 }

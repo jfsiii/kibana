@@ -11,7 +11,6 @@ import {
   AssetsGroupedByServiceByType,
   CategoryId,
   CategorySummaryList,
-  InstallSource,
   KibanaAssetType,
   RegistryPackage,
   RegistrySearchResults,
@@ -27,7 +26,7 @@ import { fetchUrl, getResponse, getResponseStream } from './requests';
 import { streamToBuffer } from '../streams';
 import { getRegistryUrl } from './registry_url';
 import { appContextService } from '../..';
-import { PackageNotFoundError, PackageCacheError } from '../../../errors';
+import { PackageNotFoundError } from '../../../errors';
 
 export interface SearchParams {
   category?: CategoryId;
@@ -145,23 +144,6 @@ export async function getRegistryPackage(
   const registryPackageInfo = await fetchInfo(pkgName, pkgVersion);
 
   return { paths, registryPackageInfo };
-}
-
-export async function ensureCachedArchiveInfo(
-  name: string,
-  version: string,
-  installSource: InstallSource = 'registry'
-) {
-  const paths = getArchiveFilelist(name, version);
-  if (!paths || paths.length === 0) {
-    if (installSource === 'registry') {
-      await getRegistryPackage(name, version);
-    } else {
-      throw new PackageCacheError(
-        `Package ${name}-${version} not cached. If it was uploaded, try uninstalling and reinstalling manually.`
-      );
-    }
-  }
 }
 
 async function fetchArchiveBuffer(
